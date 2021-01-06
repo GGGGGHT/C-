@@ -34,5 +34,4 @@ public:
         return m_c;
     }
 };
-
 #endif //C__ROUND_TEST_H

@@ -8,7 +8,6 @@
 //
 #include "round_test.h"
 
-
 int main()
 {
     Round r1;

@@ -51,6 +51,4 @@ void doSpeak(Animal &animal) {
 class polymorphic {
 
 };
-
-
 #endif //C__POLYMORPHIC_H

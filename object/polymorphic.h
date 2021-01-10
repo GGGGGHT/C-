@@ -8,9 +8,7 @@
 //
 
 #ifndef C__POLYMORPHIC_H
-
 #include "../common/common.h"
-
 #define C__POLYMORPHIC_H
 
 

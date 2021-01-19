@@ -20,4 +20,5 @@ int main(){
     doSpeak(cat);
     Animal am;
     doSpeak(am);
+    return 0;
 }

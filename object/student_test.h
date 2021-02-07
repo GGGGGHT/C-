@@ -10,10 +10,6 @@
 #include "../common/common.h"
 #define C__STUDENT_TEST_H
 
-class student_test {
-
-};
-
 class Student
 {
 public:

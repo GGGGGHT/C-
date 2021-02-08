@@ -15,6 +15,7 @@ int main()
     stu.stuNum = 10;
     stu.stuName = "helloWorld";
     stu.displayStudentInfo();
+
     // heap alloc
     Student* stu2 = new Student;
     stu2->stuNum= 100;

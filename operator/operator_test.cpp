@@ -7,7 +7,6 @@
 //
 // Created by autorun on 2021/11/4.
 //
-
 #include "operator_test.h"
 
 int main() {

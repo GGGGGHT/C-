@@ -9,7 +9,6 @@
 
 #ifndef C__OPERATOR_TEST_H
 #include "../common/common.h"
-
 #define C__OPERATOR_TEST_H
 
 

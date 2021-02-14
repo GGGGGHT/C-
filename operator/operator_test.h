@@ -12,9 +12,6 @@
 #define C__OPERATOR_TEST_H
 
 
-class operator_test {
-
-};
 
 class Operator {
 public:

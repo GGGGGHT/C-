@@ -12,7 +12,6 @@
 #define C__OPERATOR_TEST_H
 
 
-
 class Operator {
 public:
     int o_num;

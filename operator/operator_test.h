@@ -16,8 +16,8 @@ public:
     int o_num;
 
 public:
-    Operator() {
-
+    Operator()
+    {
     }
 
     // operator demo

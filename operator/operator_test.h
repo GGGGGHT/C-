@@ -21,7 +21,8 @@ public:
     }
 
     // operator demo
-    Operator operator-(const Operator &p) {
+    Operator operator-(const Operator &p)
+    {
         Operator temp;
         temp.o_num = this->o_num - p.o_num;
         return temp;

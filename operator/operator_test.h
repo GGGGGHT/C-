@@ -28,5 +28,4 @@ public:
         return temp;
     }
 };
-
 #endif //C__OPERATOR_TEST_H

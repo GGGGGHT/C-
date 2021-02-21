@@ -14,8 +14,10 @@ int fun(int, int = 100)
 
 }
 
+
 int main()
 {
 
 
+    return 0;
 }

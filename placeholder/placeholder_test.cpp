@@ -12,6 +12,7 @@
 int fun(int, int = 100)
 {
 
+    return 100;
 }
 
 

@@ -10,7 +10,4 @@
 #include "../common/common.h"
 #define C__PLACEHOLDER_TEST_H
 
-class placeholder_test {
-
-};
 #endif //C__PLACEHOLDER_TEST_H

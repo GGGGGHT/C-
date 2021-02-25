@@ -13,5 +13,4 @@
 class placeholder_test {
 
 };
-
 #endif //C__PLACEHOLDER_TEST_H

@@ -1,8 +1,11 @@
 #include <iostream>
+
+using  std::cout;
+using  std::endl;
+using  std::cin;
 void simon(int);
 
-int main(void) {
-    using namespace std;
+int main(void) {    
     simon(3);
     cout << "please input a num." << endl;
     int num;
@@ -12,5 +15,5 @@ int main(void) {
 }
 
 void simon(int rec) {
-    printf("receive num is :%d\n",rec);
+    cout << "receive num is : " << rec << endl; 
 }

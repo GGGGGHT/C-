@@ -103,4 +103,6 @@ int main() {
 
     cout << '$';
     cout.put('$');
+
+    cout << sizeof byte << endl;
 }

@@ -77,4 +77,6 @@ int main(void) {
     cout << R"(Jim "King" Tutt uses "\n" instead of endl.)" << '\n';
 
     cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;
+
+    cout << sizeof (char) << endl;
 }

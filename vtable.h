@@ -6,11 +6,25 @@
 #define C__VTABLE_H
 #include "iostream"
 
-class A {
+class A
+{
 public:
     void foo();
 };
 
+void A::foo()
+{
+    std::cout << "Hello this is foo" << std::endl;
+}
+
+class D : public A {
+public:
+    void foo();
+};
+
+void D ::foo() {
+    std::cout << "D foo override A" << std::endl;
+}
 class B  {
 public:
     virtual void bar();

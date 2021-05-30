@@ -12,7 +12,10 @@
 // the compiler knows which routine to execute during compilation.
 // 静态分派
 int main() {
-    B *b = new C();
+    C *b;
     b->bar();
     b->qux();
+
+    A *a = new D;
+    a->foo();
 }

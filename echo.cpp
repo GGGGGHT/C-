@@ -1,20 +1,29 @@
-#include <iostream>
+//#include <iostream>
+#include <stdio.h>
 
 int main() {
-    using namespace std;
+    
+//    using namespace std;
+//
+//    int carrots; // declare an integer variable
+//
+//    // carrots = 25;
+//    cout << "How many carrots do you have?" << endl;
+//
+//    cin >> carrots;
+//    cout << "Here are tow more.";
+//    carrots = carrots + 2;
+//    cout << "I have ";
+//    cout << carrots;
+//    cout << " carrots.";
+//    cout << endl;
+//    carrots = carrots - 1;
+//    cout << "Crunch, crunch. Now I have " << carrots << " crrots." << endl;
 
-    int carrots; // declare an integer variable
+    int a = 65;
+    int addr;
 
-    // carrots = 25;
-    cout << "How many carrots do you have?" << endl;
-
-    cin >> carrots;
-    cout << "Here are tow more.";
-    carrots = carrots + 2;
-    cout << "I have ";
-    cout << carrots;
-    cout << " carrots.";
-    cout << endl;
-    carrots = carrots - 1;
-    cout << "Crunch, crunch. Now I have " << carrots << " crrots." << endl;
+    addr = 0x0012ff7c;
+    printf("0x%p, 0x%p, 0x%p\n", &a, addr, (int*)addr);
+    printf("%d,%d,%d\n", a, *&a, *(int *)addr); // 65 65 0x0012ff7c
 }

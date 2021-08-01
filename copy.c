@@ -1,5 +1,10 @@
 #include "apue.h"
 
+/**
+*
+* getc read one byte and putc write the char to stdout when read the last one 
+* getc return a  EOF 
+*/
 int main() {
     
     int c;

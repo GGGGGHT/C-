@@ -17,17 +17,30 @@
  *
  * @return
  */
+union s {
+    int a;
+    char s1[4];
+} uc;
+
 int main() {
-    char *p;
-    if ((p = (char *) malloc(100)) == NULL) {
-        printf("out of memory!\n");
-        exit(1);
+//    char *p;
+//    if ((p = (char *) malloc(100)) == NULL) {
+//        printf("out of memory!\n");
+//        exit(1);
+//    }
+//
+//    gets(p);
+//    printf("%s\n", p);
+//    free(p);
+
+    // point equals
+    // *p1 = *p2
+
+    int i = 0;
+    uc.a = 0x12345678;
+    printf("0x%x\n", &uc);
+    for (; i < 4; i++) {
+        printf("0x%x 0x%x\n", &uc.s1[i], uc.s1[i]);
     }
-
-    gets(p);
-    printf("%s\n", p);
-    free(p);
-
-
     return 0;
 }

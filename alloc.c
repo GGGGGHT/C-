@@ -39,7 +39,8 @@ int main(int argc, char *argv[]) {
     scanf("%s", q);
     while (*p != '\0')
         p++;
-    printf("%d\n", p - q);
+    printf("%lld\n", p - q);
+    // 使用free时要注意,指向同一个目标的指针只能释放一次,因为释放后另一个已经是空指针,再free就要出错
     free(q);
     return 0;
 }

@@ -4,6 +4,10 @@
 #include "stdio.h"
 #include "malloc.h"
 #define NULL 0
+
+// 虽然数组没有a[n]这个元素，但是却可以引用这个元素的地址&a[n]，
+// 而且ANSI C标准也明确允许这种用法：数组中实际不存在的“溢界”元素的地址位于数组所占内存之后。
+// 这个地址可以用来进行赋值和比较，但因为不存在a[n]，所以引用该元素的值就是非法引用。
 int main(int argc, char *argv[]) {
     /*char *s;
     int n;
@@ -80,6 +84,13 @@ int main(int argc, char *argv[]) {
         a[i] = i;
     }
     // c[4] = '\n' error
-    char c[5] = "abcde";
+    char c[] = "abcde";
+    char b[6];
+    // error
+    for (i = 0; i < 6; i++)
+        b[i] = c[i];
+
+    printf(b);
+    printf("\n");
     return 0;
 }

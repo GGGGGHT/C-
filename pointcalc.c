@@ -35,12 +35,49 @@ int main() {
 
     // point equals
     // *p1 = *p2
+//    int *p1, *p2;
+//    int s1 = 0x12345678, s2 = 0x78;
+//    p1 = &s1;
+//    p2 = &s2;
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    *p2 = *p1;
+//    printf("0x%x\t0x%x\n", *p1, *p2);
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    p2 = p1;
+//    printf("0x%x\t0x%x\n", *p1, *p2);
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    char *p1, *p2;
+//    char s1[16] = "92341341", s2[16] = "G";
+//    p1 = s1,p2= s2;
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    *p2 = *p1;
+//    printf("0x%s\t0x%s\n", p1, p2);
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    p2 = p1;
+//    printf("0x%s\t0x%s\n", p1, p2);
+//    printf("0x%x\t0x%x\n", p1, p2);
+//    int i = 0;
+//    uc.a = 0x12345678;
+//    printf("0x%x\n", &uc);
+//    for (; i < 4; i++) {
+//        printf("0x%x 0x%x\n", &uc.s1[i], uc.s1[i]);
+//    }
 
-    int i = 0;
-    uc.a = 0x12345678;
-    printf("0x%x\n", &uc);
-    for (; i < 4; i++) {
-        printf("0x%x 0x%x\n", &uc.s1[i], uc.s1[i]);
-    }
+// 使用指向常量的指针指向变量时,虽然*p不能作为左值,但可以使用"x="改变x的值,x仁政改变则也改变了*p的值,也就相当于将*p间接作为左值
+    int x = 55;
+    const int y = 88;
+    const int *p;
+    int *p1;
+    p = &y;
+    printf("%d ", *p);
+    p = &x;
+    printf("%d ", *p);
+    x = 128;
+    printf("%d ", *p);
+    p1 = (int *) &y;
+    printf("%d\n", *p1);
+
+    void *vp = &x;
+    printf("%llu", sizeof vp);
     return 0;
 }

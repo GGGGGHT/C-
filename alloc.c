@@ -3,7 +3,7 @@
 //
 #include "stdio.h"
 #include "malloc.h"
-
+#define NULL 0
 int main(int argc, char *argv[]) {
     /*char *s;
     int n;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 //    // 使用free时要注意,指向同一个目标的指针只能释放一次,因为释放后另一个已经是空指针,再free就要出错
 //    free(q);
 
-    float *p, *q;
+    /*float *p, *q;
     p = q = (float *) malloc(10 * sizeof(float));
     if (q == NULL) {
         printf("error");
@@ -60,7 +60,26 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    printf("min: %f,sum: %f", min, sum);
+    printf("min: %f,sum: %f", min, sum);*/
 
+
+//    char *p, *q;
+//    printf("%s\t%s\n", p, q);
+//    printf(p, q);
+//    char s[] = "abcd";
+//    int i = 4;
+//    printf("%s\n", s);
+//    for (i = 0; i < 4; i++) {
+//        printf("%u ", s[i]);
+//    }
+//    printf("\n");
+    // 一维数据越界错误
+    int i = 0, a[5];
+    // index of out bound
+    for (i = 1; i <= 5; i++) {
+        a[i] = i;
+    }
+    // c[4] = '\n' error
+    char c[5] = "abcde";
     return 0;
 }

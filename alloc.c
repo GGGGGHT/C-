@@ -3,6 +3,7 @@
 //
 #include "stdio.h"
 #include "malloc.h"
+
 #define NULL 0
 
 // 虽然数组没有a[n]这个元素，但是却可以引用这个元素的地址&a[n]，
@@ -78,19 +79,33 @@ int main(int argc, char *argv[]) {
 //    }
 //    printf("\n");
     // 一维数据越界错误
-    int i = 0, a[5];
-    // index of out bound
-    for (i = 1; i <= 5; i++) {
-        a[i] = i;
+//    int i = 0, a[5];
+//    // index of out bound
+//    for (i = 1; i <= 5; i++) {
+//        a[i] = i;
+//    }
+//    // c[4] = '\n' error
+//    char c[] = "abcde";
+//    char b[6];
+//    // error
+//    for (i = 0; i < 6; i++)
+//        b[i] = c[i];
+//
+//    printf(b);
+//    printf("\n");
+    int i = 0;
+    char a[] = "How are you?", b[13];
+    while (a[i] != '\0') {
+        b[i] = a[i];
+        ++i;
     }
-    // c[4] = '\n' error
-    char c[] = "abcde";
-    char b[6];
-    // error
-    for (i = 0; i < 6; i++)
-        b[i] = c[i];
+    printf("%d", i);
+    b[i] = '\0';
 
-    printf(b);
+    i = -1;
+    while (i++, b[i] != '\0') {
+        printf("%c ", b[i]);
+    }
     printf("\n");
     return 0;
 }

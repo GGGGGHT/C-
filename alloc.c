@@ -5,7 +5,7 @@
 #include "malloc.h"
 
 int main(int argc, char *argv[]) {
-    char *s;
+    /*char *s;
     int n;
 
     s = (char *) malloc(50);
@@ -21,5 +21,18 @@ int main(int argc, char *argv[]) {
     s = s - n;
     free(s);
     printf("%d", n);
+*/
+    int i,*p;
+    p = (int *) malloc(8);
+    for (i = 0; i < 2; ++i, ++p) {
+        scanf("%d", p);
+    }
+    p = p - 2;
+    for (i = 0; i < 2; ++i, ++p)
+        printf("%d \t", *p);
+
+    p -= 2;
+    // 释放内存的语句free(p) `中的参数p，必须是申请到的动态内存的首地址。
+    free(p);
     return 0;
 }

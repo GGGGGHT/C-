@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     free(s);
     printf("%d", n);
 */
-    int i,*p;
+/*    int i,*p;
     p = (int *) malloc(8);
     for (i = 0; i < 2; ++i, ++p) {
         scanf("%d", p);
@@ -33,6 +33,13 @@ int main(int argc, char *argv[]) {
 
     p -= 2;
     // 释放内存的语句free(p) `中的参数p，必须是申请到的动态内存的首地址。
-    free(p);
+    free(p);*/
+    char *p,*q;
+    p = q = (char *) malloc(100);
+    scanf("%s", q);
+    while (*p != '\0')
+        p++;
+    printf("%d\n", p - q);
+    free(q);
     return 0;
 }

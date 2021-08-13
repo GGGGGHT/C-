@@ -5,35 +5,34 @@
 #include <stdio.h>
 
 int main(int args, char *argv[]) {
-    int i, j, nw, nd[10];
-    char s[100],c;
+    int i, j, nw, nd[10], nc[26], nC[26];
+    char s[100], c;
     j = 0;
     nw = 0;
     for (i = 0; i < 10; i++) {
         nd[i] = 0;
     }
-
+    for (i = 0; i < 26; i++) {
+        nc[i] = 0;
+        nC[i] = 0;
+    }
     while ((c = getchar()) != '\n') {
-        s[j] = c;
-        switch (c) {
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
-                nd[s[j] - '0']++;
-                break;
-            default:
-                nw++;
-                break;
-
+        if (c >= '0' && c <= '9') {
+            ++nd[c - '0'];
+            continue;
         }
-        j++;
+
+        if (c >= 'a' && c <= 'z') {
+            ++nc[c - 'a'];
+            continue;
+        }
+
+        if (c >= 'A' && c <= 'Z') {
+            ++nC[c - 'A'];
+            continue;
+        }
+
+        ++nw;
     }
 
     for (i = 0; i < 10; i++) {
@@ -43,6 +42,24 @@ int main(int args, char *argv[]) {
     for (i = 0; i < 10; i++) {
         printf("%d ", nd[i]);
     }
+    printf("\n");
+
+    for (i = 0; i < 26; i++) {
+        printf("%c ", 'a' + i);
+    }
+    printf("\n");
+    for (i = 0; i < 26; i++) {
+        printf("%d ", nc[i]);
+    }
+    printf("\n");
+    for (i = 0; i < 26; i++) {
+        printf("%c ", 'A' + i);
+    }
+    printf("\n");
+    for (i = 0; i < 26; i++) {
+        printf("%d ", nC[i]);
+    }
+    printf("\n");
     printf("\nnw=%d\n", nw);
     return 0;
 }

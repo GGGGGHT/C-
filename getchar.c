@@ -4,8 +4,20 @@
 
 #include <stdio.h>
 
+/**
+ * index    arr     point   point_index
+ * a[0]     a       pa      pa[0]           a[0] == *a  == *pa == pa[0]
+ * a[1]     a[1]    pa+1    pa[1]           a[1] == *(a+1) == *(pa+1) == pa[1]
+ * a[2]     a[2]    pa+2    pa[2]           a[2] == *(a+2) == *(pa+2) == pa[2]
+ * a[3]     a[3]    pa+3    pa[3]           a[3] == *(a+3) == *(pa+3) == pa[3]
+ * a[4]     a[4]    pa+4    pa[4]           a[4] == *(a+4) == *(pa+4) == pa[4]
+ *
+ * @param args
+ * @param argv
+ * @return
+ */
 int main(int args, char *argv[]) {
-    int i, j, nw, nd[10], nc[26], nC[26];
+    /*int i, j, nw, nd[10], nc[26], nC[26];
     char s[100], c;
     j = 0;
     nw = 0;
@@ -60,6 +72,12 @@ int main(int args, char *argv[]) {
         printf("%d ", nC[i]);
     }
     printf("\n");
-    printf("\nnw=%d\n", nw);
+    printf("\nnw=%d\n", nw);*/
+
+    int a[] = {1, 2, 3, 4, 5};
+    int *p = a;
+    for (int i = 0; i < 5; ++i) {
+        printf("index: %d, point: %d\n", a[i], *(p + i));
+    }
     return 0;
 }

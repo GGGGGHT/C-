@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void add(double, double, double *);
 int max(int,int);
 /**

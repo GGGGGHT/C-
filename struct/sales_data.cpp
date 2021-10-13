@@ -51,17 +51,22 @@ int main() {
 //    }
 
     string s("Hello World!!!");
-    for(auto &c: s) {
-        c = toupper(c);
-    }
-
-    cout << s << endl;
-    if(!s.empty()) {
+//    for(auto &c: s) {
+//        c = toupper(c);
+//    }
+//
+//    cout << s << endl;
+//    if(!s.empty()) {
 //        cout << s[0] << endl;
-        s[0] = tolower(s[0]);
+//        s[0] = tolower(s[0]);
+//    }
+//    cout << s << endl;
+
+    // use iterator change first world to upper case
+    for (decltype(s.size()) index = 0; index != s.size() && !isspace(s[index]); ++index) {
+        s[index] = toupper(s[index]);
     }
+
     cout << s << endl;
-
-
     return 0;
 }

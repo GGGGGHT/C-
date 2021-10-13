@@ -59,9 +59,20 @@ int main() {
     for (auto &t :i) {
         t *= t;
     }
-    for (auto t :i) {
-        cout << t << " ";
+//    for (auto t :i) {
+//        cout << t << " ";
+//    }
+//    cout << endl;
+    for (decltype(i.size()) t = 0; t < i.size(); t++) {
+        cout << i[t] << " ";
     }
     cout << endl;
+
+    // error 只能对确知已存在的元素执行下标操作 试图用下标的形式去访问一个不存在的元素将引发错误， 这种错误不会被编译器发现，而是在运行时产生一个不可预知的值。
+    // 通过下标访问不存在的元素的行为非常常见，而且会产生很严重的后果，所谓的缓冲区溢出指的就是这类错误。
+    // vector<int> ivec;
+    // for (decltype(ivec.size()) t = 0; t != 10; t++) {
+        // ivec[t] = t;
+    // }
     return 0;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 
 using namespace std;
+
 /**
  * 一个函数定义包括：
  * return_type function_name([param1,param2...]) {
@@ -30,19 +31,22 @@ size_t count_calls() {
 }
 
 // 为函数传递一个数组时，实际上传递的是指向数组首元素的指针
-void print(const int*);
+void print(const int *);
+
 void print(const int[]);
+
 void print(const int[10]);
 // 上述的三个函数是等价的
 
 // 管理指针形参的三种方式
 // 1. 使用标记指定数组长度
 void print(const char *cp) {
-    if(cp) {
+    if (cp) {
         while (*cp)
             cout << *cp++;
     }
 }
+
 // 2. 使用标准库规范
 void print(const int *beg, const int *end) {
     while (beg != end) {
@@ -57,22 +61,43 @@ void print(const int ia[], size_t size) {
     }
 }
 
-int main() {
-    for (int i = 0; i != 10; ++i) {
-        cout << count_calls() << endl;
-    }
+// 可变形参的函数
+// 如果所有的实参类型相同，可以传递一个名为initializer_list的标准库类型，如果实参的类型不同，需要编写可变参数模板
+void error_msg(initializer_list<string> il) {
+    for(auto beg = il.begin(); beg != il.end(); ++beg)
+        cout << *beg << " ";
+    cout << endl;
+}
+int main(int argc, char *argv[]) {
+//    for (int i = 0; i != 10; ++i) {
+//        cout << count_calls() << endl;
+//    }
 
 //    int n = 0;
 //    int i = n;
 //    i = 3;
 //    cout << i << endl;
 
-    int n = 0, i = 42;
-    int *p = &n, *q = &i;
-    *p = 42;
-    p = q;
-    cout << *p << " " << p << " |||||" << *q << " " << q << endl;
+//    int n = 0, i = 42;
+//    int *p = &n, *q = &i;
+//    *p = 42;
+//    p = q;
+//    cout << *p << " " << p << " |||||" << *q << " " << q << endl;
+    if (argc == 0) {
+        return 0;
+    }
 
+    // 使用时实参时， 可选的实参从argv[1]开始 argv[0]保存程序的名字，而非用户输入
+    string str;
+    for (int i = 1; i != argc; ++i) {
+//        cout << argv[i] << endl;
+        str += argv[i];
+    }
 
+    cout << str << endl;
+
+    cout << endl << endl;
+
+    error_msg({"hello", "world", "ght"});
     return 0;
 }

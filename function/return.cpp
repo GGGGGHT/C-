@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cstdlib>
 using namespace std;
 
 
@@ -37,10 +37,39 @@ const string &manip() {
 }
 // ===============引用返回左值==============
 
+// ===========返回数组指针 eg:==============
+// 因为数组不能被拷贝，所以函数不能返回数组 不过可以返回数组的指针或引用
+// 表示接收一个int类型的实参，返回一个指针，该指针指向含有10个整数的数组
+auto func(int i) -> int (*)[10];
+
+// 如果我们知道函数返回的指针将指向哪个数组，就可以使用decltype着急字声明返回类型
+int odd[] = {1, 3, 5};
+int even[] = {0, 2, 4};
+// 返回一个指针，该指针指向含有3个整数的数组
+decltype(odd) *arrPtr(int i) {
+    return (i % 2) ? &odd : &even;
+}
+// ===========返回数组指针==============
+
+
+// ==============函数重载 begin ============
+void print(const string &);
+void print(double);
+void print(int);
+
+void fooBar(int ival) {
+    print("Value: ");
+    print(ival);
+    print(3.14);
+}
+// ==============函数重载 end ============
+
+
 string make_plural(size_t ctr, const string &word, const string &ending) {
     return (ctr > 1) ? word + ending : word;
 }
 
+// main函数允许没有return直接结束
 int main() {
     string s("a value");
     cout << s << endl;

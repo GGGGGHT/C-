@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <stdexcept>
+#include <exception>
 using namespace std;
 
 /**
@@ -64,10 +65,24 @@ void print(const int ia[], size_t size) {
 // 可变形参的函数
 // 如果所有的实参类型相同，可以传递一个名为initializer_list的标准库类型，如果实参的类型不同，需要编写可变参数模板
 void error_msg(initializer_list<string> il) {
-    for(auto beg = il.begin(); beg != il.end(); ++beg)
+    for (auto beg = il.begin(); beg != il.end(); ++beg)
         cout << *beg << " ";
     cout << endl;
 }
+
+// 拥有initializer_list形参的函数也可以同时拥有其他形参。
+//void error_msg(ErrCode e, initializer_list<string> il) {
+//    cout << e.msg() << ": ";
+//    for (coust auto &elem: il)
+//        cout << elem << " ";
+//    cout << endl;
+//}
+
+// ==========
+// 省略符形参
+//void foo(parm_list ,...);
+//void foo(...);
+// ==========
 int main(int argc, char *argv[]) {
 //    for (int i = 0; i != 10; ++i) {
 //        cout << count_calls() << endl;
@@ -98,6 +113,7 @@ int main(int argc, char *argv[]) {
 
     cout << endl << endl;
 
+    // 调用initializer_list
     error_msg({"hello", "world", "ght"});
     return 0;
 }

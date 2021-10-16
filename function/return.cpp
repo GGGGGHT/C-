@@ -84,6 +84,16 @@ void f(double d1, double d2 = 3.14) {
 }
 // ===========函数匹配  end==============
 
+// ===========实参类型转换  start==============
+void ff(int);
+void ff(short);
+// ff('a'); 将char提升成int
+
+void manip(long);
+void manip(float);
+// manip(3.14) 二义性
+// ===========实参类型转换  end==============
+
 string make_plural(size_t ctr, const string &word, const string &ending) {
     return (ctr > 1) ? word + ending : word;
 }
@@ -101,5 +111,9 @@ int main() {
     f(5.6);
     // 二义性调用
     // f(42, 2.56);
+    // f(2.56, 42);
+    f(42);
+    f(42, 0);
+    f(2.54, 3.1);
     return 0;
 }

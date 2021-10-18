@@ -28,6 +28,7 @@ public:
 		return contents[cursor]; // 隐式内联
 	} // 读取光标处的字符
 
+	// 重载成员函数
 	inline char get(pos ht, pos wd) const; // 显示内联
 
 	Screen &move(pos r, pos c);

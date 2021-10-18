@@ -77,6 +77,8 @@ public:
 	typedef std::vector<Screen>::size_type ScreenIndex;
 
 	void clear(ScreenIndex);
+
+	ScreenIndex addScreen(const Screen&);
 private:
 	std::vector<Screen> screens{Screen(24, 80, ' ')};
 };
@@ -85,6 +87,12 @@ void Window_mgr::clear(ScreenIndex i) {
 	std::cout << "call clear method." << std::endl;
 	auto &s = screens[i];
 	s.contents = std::string(s.height * s.width, ' ');
+}
+
+Window_mgr::ScreenIndex Window_mgr::addScreen(const Screen& s) {
+	screens.push_back(s);
+
+	return screens.size() - 1;
 }
 // ============类型成员===========
 

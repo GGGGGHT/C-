@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 // using namespace std;
 
@@ -13,7 +14,13 @@
 
 
 // ============类型成员===========
+// 在类中一些规模较小的函数适合于被声明成函数 定义在类内部的成员函数是自动内联的
 class Screen {
+	// 如果一个类指定了友元类，则友远隔类的成员函数可以访问此类包括非仅有成员在内的所有成员。
+	// Window_mgr的成员可以访问Screen类的私有部分
+	friend class Window_mgr;
+	// friend void Window_mgr::clear(ScreenIndex);
+
 public:
 	// typedef std::string::size_type pos;
 	using pos = std::string::size_type;
@@ -33,30 +40,57 @@ public:
 
 	Screen &move(pos r, pos c);
 
+	Screen &set(char);
+
+	Screen &set(pos, pos, char);
+
 private:
 	pos cursor = 0;
 	pos height = 0, width = 0;
 	std::string contents;
 };
 
-inline &
-Screen::move(pos r, pos c ) {
-	pos row = r * width;
+inline Screen &Screen::move(pos r, pos c) {
+	auto row = r * width;
 	cursor = row + c;
 	return *this;
 }
 
-char Screen::get(pos ht, pos wd) const {
+char Screen::get(pos r, pos c) const {
 	auto row = r * width;
 	return contents[row + c];
 }
-// 在类中一些规模较小的函数适合于被声明成函数 定义在类内部的成员函数是自动内联的
+
+inline Screen &Screen::set(char c) {
+	contents[cursor] = c;
+	return *this;
+}
+
+inline Screen &Screen::set(pos r, pos col, char ch) {
+	contents[r * width + col] = ch;
+	return *this;
+}
+
+
+class Window_mgr {
+public:
+	typedef std::vector<Screen>::size_type ScreenIndex;
+
+	void clear(ScreenIndex);
+private:
+	std::vector<Screen> screens{Screen(24, 80, ' ')};
+};
+
+void Window_mgr::clear(ScreenIndex i) {
+	std::cout << "call clear method." << std::endl;
+	auto &s = screens[i];
+	s.contents = std::string(s.height * s.width, ' ');
+}
 // ============类型成员===========
 
 
 int main(int argc, char **argv) {
-	Sales_data data;
-	// cout << "--> " << data.aaa << endl;
-	// cout << data.bookNo << endl; error无法访问 private
+	Window_mgr mgr;
+	mgr.clear(0);
 	return 0;
 }

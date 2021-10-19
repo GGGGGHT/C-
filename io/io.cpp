@@ -67,10 +67,15 @@ int main(int argc, char **argv) {
 		// out.open(ifile + ".copy", std::ofstream::out | std::ofstream::trunc);
 		// 为了保留文件中的内容,必须显示指定app模式
 		// out.open(ifile + ".copy", std::ofstream::app);
-		out.open(ifile + ".copy", std::ofstream::out | std::ofstream::app);
-		out << " got file" << std::endl;
+		// out.open(ifile + ".copy", std::ofstream::out | std::ofstream::app);
+		// out << " got file" << std::endl;
 		// !!!import: 保留被ofstream打开的文件中已有数据的唯一方法是显式指定app或in模式
 		// out << content << std::flush;
+
+		// 当程序未指定模式时，使用默认值
+		out.open(ifile + ".copy");
+		out.close();
+		out.open(ifile + ".copy", std::ofstream::app);
 		out.close();
 	} else
 		std::cerr << "can't open " << ifile << std::endl;

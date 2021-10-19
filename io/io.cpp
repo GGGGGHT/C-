@@ -1,7 +1,8 @@
 #include <iostream>
-#include <fstream>
-
-// using namespace std;
+// #include <fstream>
+#include <vector>
+#include <sstream>
+using namespace std;
 /**
  * istream 输入流 提供输入操作
  * ostream 输出流 提供输出操作
@@ -22,6 +23,12 @@
  *
  * @return
  */
+
+struct PersonInfo {
+	std::string name;
+	std::vector<std::string> phones;
+};
+
 int main(int argc, char **argv) {
 	// cout << "Hi" << endl; // 输出Hi和一个换行，然后刷新缓冲区
 	// cout << "Hi" << flush; // 输出Hi，然后刷新缓冲区，不附加任何额外字符
@@ -56,7 +63,7 @@ int main(int argc, char **argv) {
 	} else {
 		cerr << "No data?!" << endl;
 	}*/
-	std::string ifile("/Users/admin/a.opt");
+	/*std::string ifile("/Users/admin/a.opt");
 	std::ifstream in(ifile);
 	std::ofstream out;
 	const std::string content("hello world");
@@ -78,7 +85,7 @@ int main(int argc, char **argv) {
 		out.open(ifile + ".copy", std::ofstream::app);
 		out.close();
 	} else
-		std::cerr << "can't open " << ifile << std::endl;
+		std::cerr << "can't open " << ifile << std::endl;*/
 
 
 
@@ -86,5 +93,32 @@ int main(int argc, char **argv) {
 
 	// ==============文件输入输出==============
 
+	// ============string输入输出=============
+	// istringstream 从string读取数据
+	// ostringstream 向string写入数据
+	// stringstream 可读取 也可写入
+	std::string line, word;
+	std::vector<PersonInfo> people;
+	while (getline(std::cin, line)) {
+		PersonInfo info;
+		std::istringstream record(line);
+		record >> info.name;
+		while (record >> word) {
+			info.phones.push_back(word);
+		}
+
+		people.push_back(info);
+	}
+
+	auto b = people.begin(), e = people.end();
+	while (b != e) {
+		std::cout << "b name : " << b->name << std::endl;
+		auto sb = b->phones.begin(), se = b->phones.end();
+		while (sb != se) {
+			std::cout << *sb++ << std::endl;
+		}
+		++b;
+	}
+	// ============string输入输出=============
 	return 0;
 }

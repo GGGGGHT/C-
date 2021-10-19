@@ -29,6 +29,15 @@ struct PersonInfo {
 	std::vector<std::string> phones;
 };
 
+bool valid(const std::string nums) {
+	return nums.size() > 3;
+}
+
+std::string format(const std::string nums) {
+	std::string tmp(nums);
+	return nums.size() > 3 ? nums : tmp.append("+++");
+}
+
 int main(int argc, char **argv) {
 	// cout << "Hi" << endl; // 输出Hi和一个换行，然后刷新缓冲区
 	// cout << "Hi" << flush; // 输出Hi，然后刷新缓冲区，不附加任何额外字符
@@ -110,15 +119,34 @@ int main(int argc, char **argv) {
 		people.push_back(info);
 	}
 
-	auto b = people.begin(), e = people.end();
-	while (b != e) {
-		std::cout << "b name : " << b->name << std::endl;
-		auto sb = b->phones.begin(), se = b->phones.end();
-		while (sb != se) {
-			std::cout << *sb++ << std::endl;
+	// auto b = people.begin(), e = people.end();
+	// while (b != e) {
+	// 	std::cout << "b name : " << b->name << std::endl;
+	// 	auto sb = b->phones.begin(), se = b->phones.end();
+	// 	while (sb != se) {
+	// 		std::cout << *sb++ << std::endl;
+	// 	}
+	// 	++b;
+	// }
+
+	// 使用ostringstream输出
+	using namespace std;
+	for(const auto &entry: people) {
+		ostringstream formatted, badNums;
+		for(const auto &nums :entry.phones) {
+			if(!valid(nums)) {
+				badNums << " " << nums;
+			} else {
+				formatted << " " << format(nums);
+			}
 		}
-		++b;
+
+		if (badNums.str().empty()) {
+			os << entry.name << " " << formatted.str() << endl;
+		} else
+			cerr << "input error: " << entry.name << " invalid number(s) " << badNums.str() << endl;
 	}
 	// ============string输入输出=============
 	return 0;
 }
+

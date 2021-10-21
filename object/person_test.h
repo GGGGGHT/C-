@@ -10,10 +10,6 @@
 #include "../common/common.h"
 #define C__PERSON_TEST_H
 
-class person_test {
-
-};
-
 class Person {
 private:
     double money;

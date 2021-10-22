@@ -7,6 +7,7 @@
 #include "climits"
 // #define String string
 using namespace std;
+
 // ========构造 string 的其他方法=======
 const char *cp = "Hello world!!!";
 char noNull[] = {'H', 'i'};
@@ -18,8 +19,25 @@ string s5(s1, 6, 5);
 string s6(s1, 6);
 string s7(s1, 6, 20);
 // string s8(s1, 16); out_ot_range
-
 // ========构造 string 的其他方法=======
+
+// =======string API =============
+// substr
+string s("hello world");
+auto sub1 = s.substr(0, 5); // hello
+auto sub2 = s.substr(6); // world
+auto sub3 = s.substr(6, 11); // world
+// auto sub4 = s.substr(12); // out_of_range
+
+// 改变 string 的其他方法
+auto ins1 = s.insert(s.size(), 5, '!');
+auto eras = s.erase(s.size() - 5, 5);
+auto ass1 = s.assign(cp, 7);
+auto ins2 = s.insert(s.size(), cp + 7);
+
+// append
+// replace
+// =======string API =============
 int main(void) {
 	using namespace std;
 	char charr1[20];
@@ -28,7 +46,7 @@ int main(void) {
 	string str1;
 	string str2 = "panther";
 
-	//    cout << "Enter a king of feline: ";
+	/*//    cout << "Enter a king of feline: ";
 	//    cin >> charr1;
 	//    cout << "Enter another kind of feline: ";
 	//    cin >> str1;
@@ -74,7 +92,7 @@ int main(void) {
 	//    getline(cin, str);
 	//    cout << "You entered: " << str << endl;
 	//    cout << "Length of string in charr after input: " << strlen(charr) << endl;
-	//    cout << "Length of string in str after input: " << str.size() << endl;
+	//    cout << "Length of string in str after input: " << str.size() << endl;*/
 
 	/*   cout << "sizeof(wchar_t): " <<sizeof(wchar_t) << endl;
 	   cout << "sizeof(char16_t): " <<sizeof(char16_t) << endl;
@@ -101,4 +119,21 @@ int main(void) {
 	cout << "s6: " << s6 << endl;
 	cout << "s7: " << s7 << endl;
 	// cout << "s8: " << s8 << endl;
+
+	cout << "sub1: " << sub1 << endl;
+	cout << "sub2: " << sub2 << endl;
+	cout << "sub3: " << sub3 << endl;
+	// cout << "sub4: " << sub4 << endl;
+
+	cout << "ins1: " << ins1 << endl;
+	cout << "eras: " << eras << endl;
+	cout << "ass1: " << ass1 << endl;
+	cout << "ins2: " << ins2 << endl;
+
+	string str = "some string", oth = "some other string";
+	str.insert(0,oth);
+	cout << "str: " << str << endl;
+	// 在 str[0]之前插入s2中 oth[0]开始的oth.size()个字符
+	str.insert(0, oth, 0, str.size());
+	cout << "str: " << str << endl;
 }

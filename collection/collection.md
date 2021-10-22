@@ -33,3 +33,11 @@ c.insert(p,il)
 
 capacity是指在不分配新的内存空间的前提下它最多可以保存多少元素
 容器的 size 是指它已经保存的元素的数目
+
+
+### string API
+s.insert(pos,args) 在pos之前插入args指定的字符  pos 可以是一个下标或一个迭代器
+s.erase(pos,len) 删除从位置 pos 开始的 len 个字符 
+s.assign(args) 将 s 中的字符替换为 args 所指定的字符 
+s.append(args) 追加到 s 之后
+s.replace(range,args) 删除 s 中范围 range 内的字符  替换为 args 指定的字符 

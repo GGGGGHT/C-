@@ -136,6 +136,22 @@ int main() {
 	//               ivec1.size()           ivec1.capacity()
 	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
 
+	// 将capacity至少设定为50 可以会更大 具体依赖于标准库实现
+	ivec1.reserve(50);
+	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
+	while (ivec1.capacity() != ivec1.size()) {
+		ivec1.push_back(0);
+	}
+	// 由于只使用了预留空间,因此没有必要重新分配空间
+	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
 
+	ivec1.push_back(0);
+	// 再添加一个元素后,vector 必须重新分配空间 capacity 每次分配内存空间时将当前容量翻倍
+	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
+
+	// 调用shrink_to_fit来将 vector 超出当前大小的多余内存退回给系统 因为size = cap == 51
+	// 该方法只是一个请求,标准库并不保证退还内存
+	ivec1.shrink_to_fit();
+	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
     return 0;
 }

@@ -6,11 +6,8 @@
 //
 // Created by autorun on 2021/11/7.
 //
-
 #ifndef C__OBJ_H
-
 #include "../common/common.h"
-
 #define C__OBJ_H
 
 
@@ -29,7 +26,6 @@ public:
 
 class obj_sub : public obj {
 
-
 public:
     int getNum() {
         INFO("call obj_sub::getNum() , value -> %d\n", i);
@@ -37,6 +33,4 @@ public:
     }
 
 };
-
-
 #endif //C__OBJ_H

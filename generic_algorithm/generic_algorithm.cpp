@@ -34,4 +34,12 @@ int main() {
 	*iter = 33;
 	*iter = 34;
 	std::cout << "size: " << v.size() << ",capacity: " << v.capacity() << std::endl;*/
+
+	vector<int> v1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	vector<int> v2;
+	// int a2[sizeof(a1) / sizeof(*a1)];
+	// auto ret = copy(v1.begin(), v1.end(), v2);
+	// std::cout << v2.size() << std::endl;
+	// std::cout << "a2 size: " << sizeof(a2) / sizeof(*a2) << std::endl;
+	// std::cout << *res << std::endl;
 }

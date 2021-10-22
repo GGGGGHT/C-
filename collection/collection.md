@@ -36,8 +36,26 @@ capacity是指在不分配新的内存空间的前提下它最多可以保存多
 
 
 ### string API
-s.insert(pos,args) 在pos之前插入args指定的字符  pos 可以是一个下标或一个迭代器
-s.erase(pos,len) 删除从位置 pos 开始的 len 个字符 
-s.assign(args) 将 s 中的字符替换为 args 所指定的字符 
-s.append(args) 追加到 s 之后
-s.replace(range,args) 删除 s 中范围 range 内的字符  替换为 args 指定的字符 
+s.insert(pos,args) 在pos之前插入args指定的字符  pos 可以是一个下标或一个迭代器<br/>
+s.erase(pos,len) 删除从位置 pos 开始的 len 个字符 <br/>
+s.assign(args) 将 s 中的字符替换为 args 所指定的字符 <br/>
+s.append(args) 追加到 s 之后<br/>
+s.replace(range,args) 删除 s 中范围 range 内的字符  替换为 args 指定的字符 <br/>
+
+
+s.find(args) 查找 s 中 args 第一次出现的位置<br/>
+s.rfind(args) 查询 s 中 args 最后一次出现的位置<br/>
+s.find_first_of(args) 在 s 中查找 args 中任何一个字符第一次出现的位置<br/>
+s.find_last_of(args) 在 s 中查找 args 中任何一个字符最后一次出现的位置<br/>
+s.find_fist_not_of(args) 在 s 中查找第一个不在 args 中的字符 <br/>
+s.find_last_not_of(args) 在 s 中查找最后一个不在 args 中的字符 
+
+to_string(val) 返回数值 val 的string 表示<br/>
+int -> stoi(s,p,b)   返回 s 的起始子串的数值 p 是 size_t指针,用来保存 s 中第一个非数值字符的下标,p 默认为0,b 表示转换所用的基数 默认为10
+long -> stol(s,p,b) 
+unsigned long -> stoul(s,p,b) 
+long long -> stoll(s,p,b) 
+
+float -> stof(s,p) 
+double -> stod(s,p) 
+long double -> stold(s,p) 

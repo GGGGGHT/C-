@@ -37,7 +37,19 @@ auto ins2 = s.insert(s.size(), cp + 7);
 
 // append
 // replace
+
+// string 搜索操作
+string name("AnnaBelle");
+auto pos1 = name.find("Anna"); // pos == 0
+auto notfound = name.find("anna"); // pos == 0
+
+// 数值操作
+int i = 42;
+string i2s = to_string(i);
+double d = stod(i2s);
 // =======string API =============
+
+
 int main(void) {
 	using namespace std;
 	char charr1[20];
@@ -136,4 +148,18 @@ int main(void) {
 	// 在 str[0]之前插入s2中 oth[0]开始的oth.size()个字符
 	str.insert(0, oth, 0, str.size());
 	cout << "str: " << str << endl;
+
+	cout << "pos1: " << pos1 << endl;
+	cout << "notfound: " << notfound << endl;
+	cout << "not find? " << (string::npos == notfound) << endl;
+
+	string numbers("0123456789"), fname("r2d2");
+	auto p = fname.find_first_of(numbers);
+	cout << "p: " << p << endl;
+
+	cout << "i2s: " << i2s << endl;
+	cout << "d: " << d << endl;
+
+	string a("pi = 3.14");
+	cout << stod(a.substr(a.find_first_of("+-.0123456789"))) << endl;
 }

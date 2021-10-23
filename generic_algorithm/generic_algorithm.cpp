@@ -35,11 +35,40 @@ int main() {
 	*iter = 34;
 	std::cout << "size: " << v.size() << ",capacity: " << v.capacity() << std::endl;*/
 
-	vector<int> v1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-	vector<int> v2;
+	// vector<int> v1{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	// vector<int> v2;
 	// int a2[sizeof(a1) / sizeof(*a1)];
 	// auto ret = copy(v1.begin(), v1.end(), v2);
 	// std::cout << v2.size() << std::endl;
 	// std::cout << "a2 size: " << sizeof(a2) / sizeof(*a2) << std::endl;
 	// std::cout << *res << std::endl;
+	int a1[] = {0, 1, 2, 3};
+	int a2[sizeof a1 / sizeof *a1];
+	auto ret = copy(begin(a1), end(a1), a2);
+
+	auto b = begin(a2), e = end(a2);
+	while (b != e) {
+		std::cout << *b++ << std::endl;
+	}
+
+	std::cout << "---------" << std::endl;
+	vector<string> words{"the", "quick", "red", "fox", "jumps", "over", "the", "slow", "red", "turtle"};
+	// 排序
+	sort(words.begin(), words.end());
+	auto wb = words.cbegin(), we = words.cend();
+	while (wb != we) {
+		std::cout << *wb++ << std::endl;
+	}
+	// 消除重复单词 unique
+	auto end_unique = unique(words.begin(), words.end());
+	std::cout << "---------" << std::endl;
+	wb = words.cbegin(), we = words.cend();
+	while (wb != we) {
+		std::cout << *wb++ << std::endl;
+	}
+	std::cout << "words size: " << words.size() << ",words capacity: " << words.capacity() << std::endl;
+	words.erase(end_unique,we);
+	std::cout << "words size: " << words.size() << ",words capacity: " << words.capacity() << std::endl;
+	words.shrink_to_fit();
+	std::cout << "words size: " << words.size() << ",words capacity: " << words.capacity() << std::endl;
 }

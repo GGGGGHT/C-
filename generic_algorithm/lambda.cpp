@@ -19,6 +19,20 @@ void fcn1() {
 	cout << j1 << endl;
 }
 
+// 可变lambda
+void fcn3() {
+	// 如果是const变量的引用  则不可以被改变
+	size_t v1 = 42;
+	// f可以改变它所捕获的变量的值 () 不能省略
+	auto f = [=]()mutable { return ++v1; };
+	auto f1 = [&]()mutable { return ++v1; };
+	v1 = 0;
+	auto j = f();
+	auto j1 = f1();
+
+	cout << "j = " << j << endl;
+	cout << "j1 = " << j1 << endl;
+}
 /**
  *
  * [capture list] (parameter list) -> return type { function body }
@@ -27,6 +41,9 @@ void fcn1() {
  * @return
  */
 
+// 隐式捕获
+// 为了指标编译器推断捕获列表,应在捕获列表中写一个'&'或'='. '&'告诉编译器采用捕获引用方式,'='则采用值捕获方式
+// 混合使用隐式捕获和显示捕获时,显式捕获的变量必须使用与隐式捕获不同的方式.
 // 捕获列表
 // [] 空捕获列表 不能使用所在函数中的变量
 // [names] names是一个逗号分隔的名字列表,这些名字都是lambda所在函数的局部变量.捕获列表变量都被拷贝.如果名字前使用了&,则采用引用捕获方式
@@ -70,9 +87,20 @@ int main() {
 
 	cout << "call fcn1().." << endl;
 	fcn1();
+	fcn3();
 
+	vector<int> v{-1, 3, 5, -2, 30};
+	/*transform(v.begin(), v.end(), v.begin(), [](int i) {
+		if (i < 0) return -i; else return i;
+	});*/
 
-	// 隐式捕获
-	// 为了指标编译器推断捕获列表,应在捕获列表中写一个'&'或'='. '&'告诉编译器采用捕获引用方式,'='则采用值捕获方式
-	// 混合使用隐式捕获和显示捕获时,显式捕获的变量必须使用与隐式捕获不同的方式.
+	transform(v.begin(), v.end(), v.begin(), [](int i) -> int {
+		if (i < 0) return -i; else return i;
+	});
+
+	auto bc = v.cbegin(),be = v.cend();
+	cout << "==============" << endl;
+	while (bc != be) {
+		cout << *bc++ << endl;
+	}
 }

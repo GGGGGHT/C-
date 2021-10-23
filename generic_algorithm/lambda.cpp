@@ -2,8 +2,10 @@
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <functional>
 
 using namespace std;
+using namespace std::placeholders;
 
 void fcn1() {
 	size_t v1 = 42;
@@ -32,6 +34,14 @@ void fcn3() {
 
 	cout << "j = " << j << endl;
 	cout << "j1 = " << j1 << endl;
+}
+
+bool check_size(const string &s, string::size_type sz) {
+	return s.size() >= sz;
+}
+
+ostream &print(ostream &os, const string &s, char c) {
+	return os << s << c;
 }
 /**
  *
@@ -98,9 +108,18 @@ int main() {
 		if (i < 0) return -i; else return i;
 	});
 
-	auto bc = v.cbegin(),be = v.cend();
+	auto bc = v.cbegin(), be = v.cend();
 	cout << "==============" << endl;
 	while (bc != be) {
 		cout << *bc++ << endl;
 	}
+
+
+	// ==========参数绑定=======
+	auto check6 = bind(check_size, _1, 6);
+	// bool b1 = check6("hello");
+	// cout << b1 << endl;
+
+	// 绑定引用参数 函数ref返回一个对象,包含给定的引用,此对象是可以拷贝的.标准库中还有一个cref函数,生成一个保存const引用的类.
+	// for_each(words.begin(), words.end(), bind(print, ref(os), _1, ' '));
 }

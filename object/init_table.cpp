@@ -6,9 +6,7 @@
 //
 // Created by autorun on 2021/11/3.
 //
-
 #include "init_table.h"
-
 
 int main()
 {

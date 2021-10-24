@@ -26,6 +26,21 @@ void readFromStandardIn() {
 }
 
 /**
+ * 使用输出流
+ */
+void writeToOstream() {
+    vector<int> v{1, 2, 3};
+    // out将类型为int的值写到输出流中，每个值 后面都输出一个c
+    ostream_iterator<int> out(cout, " ");
+    for (auto e: v) {
+        // 每次向out赋值时，写操作就会被提交
+        *out++ = e;
+        // 运算符*与++实际上对out没有任何影响
+        // out = e;
+    }
+    cout << endl;
+}
+/**
  * istream_iterator 读取输入流
  * ostream_iterator 向一个输出流写数据
  *
@@ -33,5 +48,6 @@ void readFromStandardIn() {
  * @return
  */
 int main() {
-    readFromStandardIn();
+//    readFromStandardIn();
+    writeToOstream();
 }

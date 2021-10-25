@@ -12,8 +12,6 @@
 
 int main()
 {
-
-
     Person* p = new Person(10, 20, 30);
     p->display();
 }

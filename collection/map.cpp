@@ -64,12 +64,17 @@ void useMap() {
 	string search_item("Alain de Botton");
 	authors.insert({search_item, "hello world"});
 	authors.insert({search_item, "world"});
-	authors.insert({search_item, "hello "});
+	authors.insert({"test", "hello "});
 	authors.insert({search_item, "hello ght"});
-	auto entries = authors.count(search_item);
+	/*auto entries = authors.count(search_item);
 	auto iter = authors.find(search_item);
 	while (entries--) {
 		cout << (iter++)->second << endl;
+	}*/
+
+	// lower_bound upper_bound
+	for(auto beg = authors.lower_bound(search_item), end = authors.upper_bound(search_item); beg != end; ++beg) {
+		cout << beg->second << endl;
 	}
 }
 

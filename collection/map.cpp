@@ -48,6 +48,29 @@ void useMap() {
 	// 	cout << b->first << " -> " << b->second << endl;
 	// 	++b;
 	// }
+
+
+
+	// 访问元素
+	// find查找元素是否在容器中, count会统计有多少个元素
+	set<int> iset = {1, 2, 3, 4, 5, 6};
+	iset.find(1); // 返回一个迭代器 指向k == 0的元素
+	iset.find(0); // 返回一个迭代器 iset.end()
+	iset.count(1); // 1
+	iset.count(0); // 0
+
+	// 在multimap或multiset中查找元素
+	multimap<string,string> authors;
+	string search_item("Alain de Botton");
+	authors.insert({search_item, "hello world"});
+	authors.insert({search_item, "world"});
+	authors.insert({search_item, "hello "});
+	authors.insert({search_item, "hello ght"});
+	auto entries = authors.count(search_item);
+	auto iter = authors.find(search_item);
+	while (entries--) {
+		cout << (iter++)->second << endl;
+	}
 }
 
 void usePair() {

@@ -11,9 +11,4 @@
 #define C__CONST_OBJ_FUN_H
 
 
-class const_obj_fun {
-
-};
-
-
 #endif //C__CONST_OBJ_FUN_H

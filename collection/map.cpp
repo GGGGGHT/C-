@@ -38,13 +38,16 @@ void useMap() {
 	// 使用下标操作 只能对非const的map进行下标操作
 	// c[k] 返回关键字k的元素;如果k不存在,则添加一个关键字为k的元素 对其进行值初始化
 	// c.at(k) 访问关键字为k的元素,如果k不存在则抛异常
+	// 对一个map进行下标操作时,会获得一个mapped_type对象, 解引用一个map迭代器时,会得到一个value_type对象
 	word_count["Anna"] = 1;
-
-	auto b = word_count.cbegin(), e = word_count.cend();
-	while (b != e) {
-		cout << b->first << " -> " << b->second << endl;
-		++b;
-	}
+	cout << word_count["Anna"] << endl;
+	++word_count["Anna"];
+	cout << word_count["Anna"] << endl;
+	// auto b = word_count.cbegin(), e = word_count.cend();
+	// while (b != e) {
+	// 	cout << b->first << " -> " << b->second << endl;
+	// 	++b;
+	// }
 }
 
 void usePair() {

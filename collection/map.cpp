@@ -2,7 +2,7 @@
 #include <set>
 #include <utility>
 #include <iostream>
-
+#include <unordered_map>
 using namespace std;
 
 void useMap() {
@@ -92,8 +92,22 @@ void useSet() {
 	cout << v2 << endl;
 }
 
+// 无序容器
+void useUnOrderContainer() {
+	// 无序关联容器不是使用比较去处符来组织元素,而是使用一个哗然函数和关键字的==运算符
+	unordered_map<string,size_t> word_count;
+	string word;
+	while(cin >> word) {
+		++word_count[word];
+	}
+
+	for(auto w: word_count)
+		cout << w.first << " occurs " << w.second << ((w.second > 1) ? " times." : " time.") << endl;
+}
+
 int main() {
 	// usePair();
 	// useSet();
-	useMap();
+	// useMap();
+	useUnOrderContainer();
 }

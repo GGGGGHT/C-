@@ -94,7 +94,7 @@ void useSet() {
 
 // 无序容器
 void useUnOrderContainer() {
-	// 无序关联容器不是使用比较去处符来组织元素,而是使用一个哗然函数和关键字的==运算符
+	// 无序关联容器不是使用比较去处符来组织元素,而是使用一个哈希函数和关键字的==运算符
 	unordered_map<string,size_t> word_count;
 	string word;
 	while(cin >> word) {
@@ -103,6 +103,24 @@ void useUnOrderContainer() {
 
 	for(auto w: word_count)
 		cout << w.first << " occurs " << w.second << ((w.second > 1) ? " times." : " time.") << endl;
+
+	// 管理桶
+	// 无序容器在存储上组织为一组桶,每个桶保存零个或多个元素.无序容器使用一个哈希函数将元素映射到桶
+	// 无序容器的性能依赖哈希函数的质量和桶的数量和大小
+
+	// =======API=======
+	// c.bucket_count()  正在使用的桶的数目
+	// c.max_bucket_count()  窗口能容纳的最多的桶的数量
+	// c.bucket_size(n) 第n个桶中有多少个元素
+	// c.bucket(k) 关键字为k的元素在哪个桶中
+	// =======迭代=======
+	// local_iterator 访问桶中元素的迭代器类型
+	// begin() cbegin() end() cend()
+	// =======哈希策略====
+	// c.load_factor() 每个桶的平均元素数据
+	// c.max_load_factor()
+	// c.rehash(n)
+	// c.reserve(n)
 }
 
 int main() {

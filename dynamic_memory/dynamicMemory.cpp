@@ -35,9 +35,31 @@
  * make_shared<T>(args) 返回一个shared_ptr,指向一个动态分配的类型为T的对象.使用args初始化此对象
  */
 using namespace std;
+/**
+ * 使用动态内存的一个常见原因是允许多个对象共享相同的状态
+ * 程序使用动态内存的原因:
+ * 1. 程序不知道自己需要使用多少对象 (容器)
+ * 2. 程序不知道所需对象的准确类型
+ * 3. 程序需要在多个对象间共享数据
+ */
+// 程序需要在多个对象间共享数据
+void sharedData() {
+	// 拷贝一个vector时,原vector和副本vector中的元素是相互分离的.
+	vector<string> v1;
+	{ // 新作用域
+		vector<string> v2 = {"a", "an", "the"};
+		v1 = v2; // 从v2拷贝元素到v1中
+	} // v2被销毁,其中元素也被销毁
+
+	// v1有三个元素,是原来v2中元素的拷贝
+	auto cb = v1.cbegin(), ce = v1.cend();
+	while (cb != ce) {
+		cout << *cb++ << endl;
+	}
+}
 
 void use_shared_ptr() {
-	shared_ptr<string> p1 = make_shared<string>(10,'A'); // shared_ptr 可以指向string
+	shared_ptr<string> p1 =  make_shared<string>(10,'A'); // shared_ptr 可以指向string
 	// shared_ptr<std::vector<int>> p2; // shared_ptr 可以指向int的vector
 	if (p1 && p1->empty()) {
 		*p1 = "hi"; // 如果p1指向一个空string,解引用p1,将一个新值赋于string
@@ -47,5 +69,6 @@ void use_shared_ptr() {
 }
 
 int main() {
-	use_shared_ptr();
+	// use_shared_ptr();
+	sharedData();
 }

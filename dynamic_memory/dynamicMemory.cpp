@@ -2,6 +2,8 @@
 // Created by Admin on 2021/10/27.
 //
 #include <iostream>
+#include <memory>
+#include <vector>
 #include "dynamicMemory.h"
 
 /**
@@ -24,14 +26,26 @@
  * delete: 接受一个动态对象的指针,销毁该对象,并释放与之关联的内存.
  *
  * 智能指针:
- * 智能指针的行为类似常规指针,重要的区别是它负责自动释放所指向的对象.
+ * 智能指针的行为类似常规指针,重要的区别是它负责自动释放所指向的对象. 三种类型都定义在头文件memory中
  * shared_ptr 允许多个指针指向同一个对象
  * unique_ptr 独占所指向的对象
  * weak_ptr 弱引用,指向shared_ptr所管理的对象.
+ *
+ * 默认初始化的智能指针中保存着一个空指针.
+ * make_shared<T>(args) 返回一个shared_ptr,指向一个动态分配的类型为T的对象.使用args初始化此对象
  */
+using namespace std;
+
+void use_shared_ptr() {
+	shared_ptr<string> p1 = make_shared<string>(10,'A'); // shared_ptr 可以指向string
+	// shared_ptr<std::vector<int>> p2; // shared_ptr 可以指向int的vector
+	if (p1 && p1->empty()) {
+		*p1 = "hi"; // 如果p1指向一个空string,解引用p1,将一个新值赋于string
+	}
+	cout << "p1: " << *p1 << endl;
+
+}
 
 int main() {
-	using namespace std;
-
-	cout << "hello";
+	use_shared_ptr();
 }

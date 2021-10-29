@@ -74,6 +74,15 @@ void use_shared_ptr() {
 
 }
 
+/**
+ * 直接管理内存
+ *
+ * C++定义了两个去处符来分配和释放动态内存. 运算符new分配内存,delete释放new分配的内存
+ */
+void dynamic_mamager() {
+
+}
+
 int main() {
 	// use_shared_ptr();
 	// sharedData();
@@ -86,4 +95,23 @@ int main() {
 		cout << "b2: " << b2.size() << endl;
 	}
 	cout << "b1: " << b1.size() << endl;
+
+	const string *pcs = new const string;
+
+	cout << *pcs << endl;
+
+	int *p1 = new int; // 如果分配失败,new抛出std::bad_alloc
+	int *p2 = new(nothrow)int; // 如果分配失败,new返回一个空指针  定位new
+
+	// 释放动态内存
+	delete p1; // 必须指向一个动态分配的对象或是一个空指针
+	delete p2;
+
+	int i, *pi1 = &i, *pi2 = nullptr;
+	double *pd = new double(33), *pd2 = pd;
+	// delete i; // 错误 i不是一个指针
+	delete pi1; // 未定义 pi1指向一个局部变量
+	delete pd; // 正确
+	delete pd2; // 未定义 pd2指向的内存已经释放
+	delete pi2; // 正确
 }

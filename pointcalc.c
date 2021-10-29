@@ -1,3 +1,9 @@
+// Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+// Vestibulum commodo. Ut rhoncus gravida arcu.
+
 //
 // Created by 75685 on 2021/8/11.
 //
@@ -25,7 +31,7 @@ union s {
 int main() {
 //    char *p;
 //    if ((p = (char *) malloc(100)) == NULL) {
-//        printf("out of memory!\n");
+//        printf("out of dynamic_memory!\n");
 //        exit(1);
 //    }
 //

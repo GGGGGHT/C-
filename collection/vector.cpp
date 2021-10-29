@@ -1,3 +1,9 @@
+// Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+// Vestibulum commodo. Ut rhoncus gravida arcu.
+
 #include <vector>
 #include <iostream>
 #include <cstring>
@@ -153,5 +159,7 @@ int main() {
 	// 该方法只是一个请求,标准库并不保证退还内存
 	ivec1.shrink_to_fit();
 	cout << "ivec1: size: " << ivec1.size() << ", capacity: " << ivec1.capacity() << endl;
+
+	cout << "ivec type:" <<  << endl;
     return 0;
 }

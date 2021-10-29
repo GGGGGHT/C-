@@ -1,3 +1,9 @@
+// Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+// Vestibulum commodo. Ut rhoncus gravida arcu.
+
 //
 // Created by Admin on 2021/5/10.
 //
@@ -88,7 +94,7 @@ int main(void) {
 	//    cout << "charr1: " << charr1 << endl;
 	//    cout << "charr1 length: " << strlen(charr1) << endl;
 	//    char size[6] = "house";
-	//    strcat(size, " of pancakes"); // memory problem
+	//    strcat(size, " of pancakes"); // dynamic_memory problem
 	//    cout << size << endl;
 
 	//    char charr[20];

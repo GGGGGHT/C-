@@ -1,3 +1,9 @@
+// Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+// Vestibulum commodo. Ut rhoncus gravida arcu.
+
 #include <iostream>
 #include <string>
 
@@ -50,7 +56,7 @@ int main() {
 //            cout << world << endl;
 //    }
 
-    string s("Hello World!!!");
+    string s("hello World!!!");
 //    for(auto &c: s) {
 //        c = toupper(c);
 //    }
@@ -63,10 +69,16 @@ int main() {
 //    cout << s << endl;
 
     // use iterator change first world to upper case
-    for (decltype(s.size()) index = 0; index != s.size() && !isspace(s[index]); ++index) {
-        s[index] = toupper(s[index]);
-    }
+//    for (decltype(s.size()) index = 0; index != s.size() && !isspace(s[index]); ++index) {
+//        s[index] = toupper(s[index]);
+//    }
 
+    // use iterator
+    auto b = s.begin(), e = s.end();
+    while(b != e && !isspace(*b)) {
+        *b = toupper(*b);
+        ++b;
+    }
     cout << s << endl;
     return 0;
 }

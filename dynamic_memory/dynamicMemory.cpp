@@ -1,3 +1,9 @@
+// Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+// Vestibulum commodo. Ut rhoncus gravida arcu.
+
 //
 // Created by Admin on 2021/10/27.
 //
@@ -59,7 +65,7 @@ void sharedData() {
 }
 
 void use_shared_ptr() {
-	shared_ptr<string> p1 =  make_shared<string>(10,'A'); // shared_ptr 可以指向string
+	shared_ptr<string> p1 = make_shared<string>(10, 'A'); // shared_ptr 可以指向string
 	// shared_ptr<std::vector<int>> p2; // shared_ptr 可以指向int的vector
 	if (p1 && p1->empty()) {
 		*p1 = "hi"; // 如果p1指向一个空string,解引用p1,将一个新值赋于string
@@ -70,5 +76,14 @@ void use_shared_ptr() {
 
 int main() {
 	// use_shared_ptr();
-	sharedData();
+	// sharedData();
+	StrBlob b1;
+	{
+		StrBlob b2 = {"a", "an", "the"};
+		b1 = b2;
+		b2.push_back("about");
+
+		cout << "b2: " << b2.size() << endl;
+	}
+	cout << "b1: " << b1.size() << endl;
 }

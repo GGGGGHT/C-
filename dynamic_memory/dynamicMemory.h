@@ -29,6 +29,8 @@ public:
 
 	StrBlob(std::initializer_list<std::string> il);
 
+	~StrBlob();
+
 	size_type size() const { return data->size(); }
 
 	bool empty() const { return data->empty(); }
@@ -46,6 +48,9 @@ private:
 
 	void check(size_type i, const std::string &msg) const;
 };
+
+// 析构函数
+StrBlob::~StrBlob() = default;
 
 StrBlob::StrBlob() : data(std::make_shared<std::vector<std::string>>()) {}
 

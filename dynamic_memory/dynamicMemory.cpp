@@ -25,6 +25,14 @@
  * @return
  */
 
+/**
+ * 智能指针陷阱
+ * 1. 不使用相同的内置指针值初始化多个智能指针
+ * 2. 不delete get()返回的指针
+ * 3. 不使用get()初始化或reset另一个智能指针
+ * 4. 如果使用get()返回的指针,雇当最后一个对应的智能指针销毁后,你的指针就变为无效了
+ * 5. 如果智能指针管理的资源不是new分配的内存,需要传递给它一个删除器
+ */
 
 /**
  * 在C++中,动态内存的管理是通过一对运算符来完成
@@ -76,17 +84,55 @@ void use_shared_ptr() {
 
 /**
  * 直接管理内存
- *
+ * hello world
  * C++定义了两个去处符来分配和释放动态内存. 运算符new分配内存,delete释放new分配的内存
+ * 使用new delete管理动态内存存在三个常见问题:
+ * 1. 忘记delete内存.忘记释放动态内存会导致内存泄漏问题 因为这种内存永远不可能被归还给自由空间了.
+ * 2. 使用已经释放掉的对象.
+ * 3. 同一块内存释放两次.
+ *
+ *
+ * shared_ptr 和 new 结合
+ * 默认情况下,一个用来初始化智能指针的普通指针必须指向动态内存,因为智能指针默认使用delete释放它所关联的对象.
+ * 使用一个内置指针来访问一个智能指针所负责的对象是很危险的.
  */
 void dynamic_mamager() {
+	// 如果不初始化一个智能指针,它就会被初始化为一个空指针
+	// shared_ptr<double> p1; // shared_ptr可以指向一个double
+	// 直接初始化
+	shared_ptr<int> p(new int(42)); // p2 指向一个值为42的int
+
+	// shared_ptr<int> p3 = new int(1024); // 错误: 必须使用直接初始化形式
+	int *q = p.get();
+	{
+		shared_ptr<int>(q);
+		// cout << "q: " << q << endl;
+	}
+	int foo = *p;
+	cout << "foo: " << foo << endl;
+
+	// 使用reset来将一个新的指针赋予shared_ptr
+	// p = new int(1024); 错误 不能将一个指针赋予shared_ptr
+	p.reset(new int(1024)); // 正确
+	if (!p.unique()) {
+		p.reset(new int(*p));
+	}
 
 }
+
+void exception_in_method() {
+	shared_ptr<int> sp(new int(42));
+	// throw exception
+	int *ip = new int(42);
+	// throw exception
+	// 如果在 new 与 delete之间发生异常,且异常未在方法中被捕获,则内存永远不会被释放了.
+	delete ip;
+} // 函数结束时sp自动释放内存
 
 int main() {
 	// use_shared_ptr();
 	// sharedData();
-	StrBlob b1;
+	/*StrBlob b1;
 	{
 		StrBlob b2 = {"a", "an", "the"};
 		b1 = b2;
@@ -113,5 +159,7 @@ int main() {
 	delete pi1; // 未定义 pi1指向一个局部变量
 	delete pd; // 正确
 	delete pd2; // 未定义 pd2指向的内存已经释放
-	delete pi2; // 正确
+	delete pi2; // 正确*/
+
+	dynamic_mamager();
 }

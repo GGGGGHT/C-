@@ -21,5 +21,7 @@ int main()
     // add test
     auto rst = add(1, 2);
     assert(rst == 3);
+    auto rst2 = sub(10, 1);
+    assert(rst2 == 9);
     return 0;
 }

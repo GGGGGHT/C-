@@ -76,11 +76,24 @@ void use_shared_ptr() {
 
 /**
  * 直接管理内存
- *
+ * hello world
  * C++定义了两个去处符来分配和释放动态内存. 运算符new分配内存,delete释放new分配的内存
- */
+ * 使用new delete管理动态内存存在三个常见问题:
+ * 1. 忘记delete内存.忘记释放动态内存会导致内存泄漏问题 因为这种内存永远不可能被归还给自由空间了.
+ * 2. 使用已经释放掉的对象.
+ * 3. 同一块内存释放两次.
+ *
+ *
+ * shared_ptr 和 new 结合
+ * 默认情况下,一个用来初始化智能指针的普通指针必须指向动态内存,因为智能指针默认使用delete释放它所关联的对象.
+ * */
 void dynamic_mamager() {
+	// 如果不初始化一个智能指针,它就会被初始化为一个空指针
+	shared_ptr<double> p1; // shared_ptr可以指向一个double
+	// 直接初始化
+	shared_ptr<int> p2(new int(42)); // p2 指向一个值为42的int
 
+	// shared_ptr<int> p3 = new int(1024); // 错误: 必须使用直接初始化形式
 }
 
 int main() {

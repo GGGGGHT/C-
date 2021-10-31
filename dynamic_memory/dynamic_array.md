@@ -22,3 +22,11 @@ int *pia = new int[get_size()];
 ```
 当我们释放一个指向数组的指针时,空方括号对是必须的!
 p必须指向一个动态分配的数组或为空 数组中的元素按逆序销毁,即最后一个元素首先被销毁.
+
+智能指针与动态数组相结合:
+```c++
+unique_ptr<int[]> up(new int[10]);
+up.release(); // 由于up指向一个数组，当up销毁它管理的指针时，会自动使用delete[]。
+
+shared_ptr<int> sp(new int[10], [](int *o) {delete[] p;});
+```

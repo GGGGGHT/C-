@@ -33,5 +33,9 @@ struct Student
 
 void printStu(Student* stu);
 void printStu(Student stu);
+void printStu2(Student stu)
+{
+    cout << stu.score << "\t" << stu.age << "\t" << stu.name << endl;
+}
 
 #endif //C__STRUCT_TEST_H

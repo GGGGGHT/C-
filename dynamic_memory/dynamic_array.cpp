@@ -4,6 +4,8 @@
 
 #include "dynamic_array.h"
 #include <iostream>
+#include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -11,7 +13,7 @@ int main() {
     // 未初始化的int
     // int *p = new int[42];
     // 初始化的int 值为0
-    int *p = new int[42]();
+    /*int *p = new int[42]();
     int a[] = {1, 2, 3};
     // error 不能对动态数组调用begin,end 也不能用范围for语句来处理动态数组中的元素
     // auto pb = begin(p), pe = end(p);
@@ -32,5 +34,31 @@ int main() {
     typedef int arrT[42];
     int *pa = new arrT;
     // 不管外表如何，pa指向一个对象数组的首元素，而不是一个类型为arrT的单一对象。因此，在释放p时我们必须使用[]。
-    delete[] pa;
+    delete[] pa;*/
+
+
+    std::allocator<string> alloc;
+    auto *sp = alloc.allocate(3);
+    auto sq = sp;
+    alloc.construct(sq++, "a");
+    alloc.construct(sq++, 10, 'h');
+    alloc.construct(sq++, "hi");
+    for (int i = 0; i != 3; ++i) {
+        cout << *sp++ << endl;
+    }
+
+    while (sq != sp) {
+        alloc.destroy(--sq);
+    }
+    // alloc.deallocate(sq, 3); // 释放内存
+
+    std::vector<int> v = {1, 2, 3, 4, 5};
+    allocator<int> ia;
+    auto ip = ia.allocate(v.size() * 2);
+    auto iq = uninitialized_copy(v.cbegin(), v.cend(), ip);
+    uninitialized_fill_n(iq, v.size(), 42);
+    auto pp = ip;
+    for (int i = 0; i != 2 * v.size(); ++i) {
+        cout << *pp++ << endl;
+    }
 }

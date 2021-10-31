@@ -30,3 +30,13 @@ up.release(); // 由于up指向一个数组，当up销毁它管理的指针时�
 
 shared_ptr<int> sp(new int[10], [](int *o) {delete[] p;});
 ```
+
+
+## 使用allocator
+标准库allocator类定义在头文件memory中，它将内存分配和对象构造分离开来。提供一种类型感知的内存分配方法，它分配的内存是原始的、未构造的
+
+
+```c++
+allocator<string> alloc; // 可以分配string的allocator对象
+auto const p = alloc.allocate(n); // 分配n个未初始化的string
+```

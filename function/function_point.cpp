@@ -13,5 +13,11 @@ int main()
     auto pr = lengthCompare;
     bool rst = pr("abc23", "defg");
     cout << rst << endl;
+
+//    bool rst2 = (*pf)("abc", "d");
+//    cout << rst2 << endl;
+
+bool r3 = lengthCompare("abb", "cdde");
+cout << r3 << endl;
     return 0;
 }

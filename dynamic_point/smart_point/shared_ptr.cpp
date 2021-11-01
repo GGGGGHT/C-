@@ -3,7 +3,7 @@
 //
 
 #include "shared_ptr.h"
-
+#include <memory>
 int main(int argc, char *argv[]) {
     shared_ptr<string> sPtr;
 

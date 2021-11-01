@@ -3,7 +3,6 @@
 //
 
 #ifndef C__DEMO_H
-#include <string>
 #include "stdio.h"
 #include <iostream>
 using namespace std;

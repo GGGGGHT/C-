@@ -20,6 +20,9 @@
  *
  *
  * 为了避免string的拷贝.定义了所谓的"移动构造函数"
+ *
+ * 移动构造函数
+ * 移动赋值运算符
  */
 
 #ifndef _DYNAMICMEMORYMANAGER_H_
@@ -38,7 +41,24 @@ public:
     elements = newData.first;
     first_free = cap = newData.second;
   }
+  // 移动构造函数
+  StrVec(StrVec &&s) noexcept // 移动操作不应抛出异常
+      : elements(s.elements), first_free(s.first_free), cap(s.cap) {
+    s.elements = s.first_free = s.cap = nullptr;
+  }
 
+  // 移动赋值运算符
+  StrVec &operator=(StrVec &&rhs) noexcept {
+    if (this != &rhs) {
+      free();
+      elements = rhs.elements;
+      first_free = rhs.first_free;
+      cap = rhs.cap;
+      rhs.elements = rhs.first_free = rhs.cap = nullptr;
+    }
+
+    return *this;
+  }
   StrVec &operator=(const StrVec &rhs) {
     auto data = alloc_n_copy(rhs.begin(), rhs.end());
     free();

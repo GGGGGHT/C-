@@ -110,4 +110,8 @@ StrVec::alloc_n_copy(const std::string *b, const std::string *e) {
 }
 class dynamicMemoryManager {};
 
+// 对象移动
+// 在很多情况下,对象拷贝后就立即被销毁了,在这些情况下,移动而非拷贝对象会大幅度提升性能
+// 重新分配内存的过程中,从旧内存将元素拷贝到新内存是不必要的,更好的方式是移动元素.
+
 #endif //_DYNAMICMEMORYMANAGER_H_

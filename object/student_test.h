@@ -24,7 +24,7 @@ public:
     }
     ~Student()
     {
-        INFO("析构函数执行...\n");
+        INFO("析构函数执行...%d\n", stuNum);
     }
 };
 

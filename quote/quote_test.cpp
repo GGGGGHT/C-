@@ -9,6 +9,14 @@
  * 1. 引用必须初始化
  * 2. 引用初始化后不能修改
  *
+ *
+ * --------------------------
+ * 引用本质是指针常量
+ * case: ->
+ *      int a = 10;
+ *      相当于转换为int* const qa = a; 指针的指向不能修改，这也就可以解释为什么引用的地址不能被修改
+ *      int &qa = a;
+ *
  * @return
  */
 int main() {
@@ -30,5 +38,9 @@ int main() {
     quote_snap = new_num;
     INFO("update test source: %d target : %d quote_snap: %d \n", num, num_snap, quote_snap);
 
+//    int &q_new_num = new_num;
+//    int* p_new_num = &new_num;
+// build fail.
+//    q_new_num = &p_new_num;
     return 0;
 }

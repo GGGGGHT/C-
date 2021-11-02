@@ -31,4 +31,19 @@ public :
     }
 };
 
+class HasPtr {
+  // 将swap定义为友元函数,使其可以访问HasPtr的数据成员
+  friend void swap(HasPtr &, HasPtr &);
+
+private:
+  std::string *ps;
+  int i;
+};
+
+// 为了优化代码,将其声明为内联函数
+inline void HasPtr::swap(HasPtr &lhs, HasPtr &rhs) {
+  using std::swap;
+  swap(lhs.ps, rhs.ps);
+  swap(lhs.i, rhs.i);
+}
 #endif //C__CLASSOPERATOR_H

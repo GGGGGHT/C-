@@ -18,5 +18,9 @@ int main() {
 
     SumOperator rstOpt = opt1 + opt2;
     INFO("result: %d\n", rstOpt.num);
+
+//    NewOperator *newOpt = new NewOperator();
+//    cout << newOpt << " --> " << *newOpt << endl;
+    // INFO("newOpt value: -> %s\n", newOpt->text);
     return 0;
 }

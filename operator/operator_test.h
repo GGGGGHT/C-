@@ -11,9 +11,7 @@
 #ifndef C__OPERATOR_TEST_H
 
 #include "../common/common.h"
-
 #define C__OPERATOR_TEST_H
-
 
 class operator_test {
 
@@ -28,6 +26,20 @@ public:
         SumOperator temp;
         temp.num = opt.num + num;
         return temp;
+    }
+};
+
+class NewOperator {
+public:
+    string text;
+
+
+    void *operator new(size_t size) {
+        void *nopt = ::new NewOperator();
+        NewOperator* nop = (*NewOperator)nopt;
+        nop->text = "hello new Operator";
+//        nopt->text = "hello new Operator";
+        return nopt;
     }
 };
 

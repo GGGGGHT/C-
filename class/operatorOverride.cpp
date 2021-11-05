@@ -71,5 +71,32 @@ std::istream &operator>> (std::istream &is, Sales_data &item)
  *
  * @return
  */
+
+/**
+ * 下标运算符
+ * 必须是成员函数 通常以访问元素的引用作为返回值
+ * 通常会定义两个版本: 一个返回普通引用,另一个是类的常量成员并且返回常量引用
+ * @return
+ */
+
+
+/**
+ * 递增和递减运算符
+ * 1. 前置 ++i
+ * 2. 后置 i++
+ *
+ * 通过一个额外的int类型形参来区分前置,后置运算符
+ * @return
+ */
+class StrBlobPtr {
+ public:
+  // 递增和递减运算符 前置运算符
+  StrBlobPtr& operator++();
+  StrBlobPtr& operator--();
+  // 后置运算符 后会运算符应该返回对象的原值,返回的形式是一个值而非引用
+  StrBlobPtr operator++(int);
+  StrBlobPtr operator--(int);
+};
+
 int main ()
 {}

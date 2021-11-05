@@ -91,12 +91,49 @@ std::istream &operator>> (std::istream &is, Sales_data &item)
 class StrBlobPtr {
  public:
   // 递增和递减运算符 前置运算符
-  StrBlobPtr& operator++();
-  StrBlobPtr& operator--();
+  StrBlobPtr &operator++ ();
+  StrBlobPtr &operator-- ();
   // 后置运算符 后会运算符应该返回对象的原值,返回的形式是一个值而非引用
-  StrBlobPtr operator++(int);
-  StrBlobPtr operator--(int);
+  StrBlobPtr operator++ (int);
+  StrBlobPtr operator-- (int);
 };
 
+/**
+ * 函数调用运算符
+ */
+struct absInt {
+  int operator() (int val) const
+  {
+	return val < 0 ? -val : val;
+  }
+
+  int operator() (int v1, int v2) const
+  {
+	return v1 + v2;
+  }
+};
+
+class PrintString {
+ public:
+  PrintString (std::ostream &o = std::cout, char c = ' ') :
+	  os (o), sep (c)
+  {}
+  void operator() (const std::string &s)
+  { os << s << sep; }
+
+ private:
+  std::ostream &os;
+  char sep;
+};
 int main ()
-{}
+{
+  absInt abs_int;
+
+  std::cout << abs_int (-5) << std::endl;
+  std::cout << abs_int (-5, 2) << std::endl;
+
+  PrintString printer;
+  printer ("hello");
+  PrintString errors (std::cerr, '\n');
+  errors ("world");
+}

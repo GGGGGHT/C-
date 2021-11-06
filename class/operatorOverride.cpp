@@ -125,6 +125,24 @@ class PrintString {
   std::ostream &os;
   char sep;
 };
+
+
+
+/**
+* 标准库定义的函数对象
+ * <functional>
+*/
+void stdFunctionObject() {
+  std::plus<int> intAdd; // 可执行int加法的函数对象
+  std::negate<int> intNegate;
+  auto res = intAdd (10, 20);
+
+  std::cout << res << std::endl;
+  res = intNegate(-5);
+  std::cout << res << std::endl;
+}
+
+
 int main ()
 {
   absInt abs_int;
@@ -136,4 +154,17 @@ int main ()
   printer ("hello");
   PrintString errors (std::cerr, '\n');
   errors ("world");
+
+  stdFunctionObject();
 }
+
+
+
+
+
+
+
+
+
+
+

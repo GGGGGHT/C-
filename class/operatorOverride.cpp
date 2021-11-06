@@ -126,22 +126,38 @@ class PrintString {
   char sep;
 };
 
-
-
 /**
 * 标准库定义的函数对象
  * <functional>
 */
-void stdFunctionObject() {
+void stdFunctionObject ()
+{
   std::plus<int> intAdd; // 可执行int加法的函数对象
   std::negate<int> intNegate;
   auto res = intAdd (10, 20);
 
   std::cout << res << std::endl;
-  res = intNegate(-5);
+  res = intNegate (-5);
   std::cout << res << std::endl;
 }
 
+/**
+ * C++可以调用的对象有: 函数,函数指针,lambda表达式,bind创建的对象以及重载了函数调用运算符的类
+ * 不同类型的可调用对象可以共享同一种调用形式
+ * @return
+ */
+// ====================调用形式int(int,int)=============
+int add (int i, int j)
+{ return i + j; }
+auto mod = [] (int i, int j)
+{ return i % j; };
+struct divide {
+  int operator() (int denominator, int divisor)
+  {
+	return denominator / divisor;
+  }
+};
+// ====================调用形式int(int,int)=============
 
 int main ()
 {
@@ -155,7 +171,7 @@ int main ()
   PrintString errors (std::cerr, '\n');
   errors ("world");
 
-  stdFunctionObject();
+  stdFunctionObject ();
 }
 
 

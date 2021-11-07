@@ -9,3 +9,12 @@
 //
 
 #include "obj.h"
+
+int main() {
+    obj o;
+//    o.setNum(100);
+    o.getNum();
+    obj_sub os;
+    os.getNum();
+//    os:obj.getNum();
+}

@@ -18,6 +18,13 @@ class Animal {
 public:
     /**
      * 如果增加 `virtual` 之后相当于增加了 `vfptr`( virtual function pointer) 虚函数指针
+     *  vfptr -> vftable(virtual function table) 虚函数表
+     *     vftable -> {
+     *      vfaddr(虚函数地址) 如果子类重写虚方法后,则会替换为子类的虚函数地址
+     *          before: vfaddr: &Animal.speak()
+     *          after: vfaddr: &Cat.speak()
+     *     }
+     *
      */
     virtual void speak() {
         INFO("动物在说话\n");

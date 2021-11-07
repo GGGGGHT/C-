@@ -3,7 +3,7 @@
 // Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
 // Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
 // Vestibulum commodo. Ut rhoncus gravida arcu.
-
+//
 //
 // Created by autorun on 2021/11/4.
 //
@@ -11,35 +11,28 @@
 #ifndef C__OPERATOR_TEST_H
 
 #include "../common/common.h"
+
 #define C__OPERATOR_TEST_H
+
 
 class operator_test {
 
 };
 
-class SumOperator {
+class Operator {
+public:
+    int o_num;
 
 public:
-    int num;
+    Operator() {
 
-    SumOperator operator+(const SumOperator &opt) {
-        SumOperator temp;
-        temp.num = opt.num + num;
-        return temp;
     }
-};
 
-class NewOperator {
-public:
-    string text;
-
-
-    void *operator new(size_t size) {
-        void *nopt = ::new NewOperator();
-        NewOperator* nop = (*NewOperator)nopt;
-        nop->text = "hello new Operator";
-//        nopt->text = "hello new Operator";
-        return nopt;
+    // operator demo
+    Operator operator-(const Operator &p) {
+        Operator temp;
+        temp.o_num = this->o_num - p.o_num;
+        return temp;
     }
 };
 

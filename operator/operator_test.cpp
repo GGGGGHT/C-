@@ -3,7 +3,7 @@
 // Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
 // Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
 // Vestibulum commodo. Ut rhoncus gravida arcu.
-
+//
 //
 // Created by autorun on 2021/11/4.
 //
@@ -11,16 +11,11 @@
 #include "operator_test.h"
 
 int main() {
-    SumOperator opt1;
-    opt1.num = 101;
-    SumOperator opt2;
-    opt2.num = 202;
+    Operator *op = new Operator();
+    op->o_num = 1000;
 
-    SumOperator rstOpt = opt1 + opt2;
-    INFO("result: %d\n", rstOpt.num);
-
-//    NewOperator *newOpt = new NewOperator();
-//    cout << newOpt << " --> " << *newOpt << endl;
-    // INFO("newOpt value: -> %s\n", newOpt->text);
-    return 0;
+    Operator *op2 = new Operator();
+    op2->o_num = 500;
+    Operator *op3 = op - op2;
+    INFO("op3 value -> %d\n", op3->o_num);
 }

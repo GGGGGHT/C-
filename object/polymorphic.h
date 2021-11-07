@@ -16,6 +16,9 @@
 
 class Animal {
 public:
+    /**
+     * 如果增加 `virtual` 之后相当于增加了 `vfptr`( virtual function pointer)
+     */
     virtual void speak() {
         INFO("动物在说话\n");
     }

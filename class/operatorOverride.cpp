@@ -19,6 +19,7 @@
  */
 #include "operatorOverride.h"
 #include <iostream>
+#include <map>
 
 /**
  * 输入和输出运算符重载
@@ -29,11 +30,12 @@
  * 输出运算符应该主要负责打印对象的内容而非控制格式.因为不应该打印换行符
  * @return
  */
-class Sales_data {};
-std::ostream &operator<< (std::ostream &os, const Sales_data &item)
-{
-  // print
-  return os;
+class Sales_data {
+};
+
+std::ostream &operator<<(std::ostream &os, const Sales_data &item) {
+    // print
+    return os;
 }
 
 /**
@@ -48,14 +50,13 @@ std::ostream &operator<< (std::ostream &os, const Sales_data &item)
  * 当读取操作发生错误时,输入运算符负责从错误中恢复
  * @return
  */
-std::istream &operator>> (std::istream &is, Sales_data &item)
-{
-  // operation
-  if (is) // 在使用前需要检查输入流的合法性.
-	// do some thing
-	;
-  else; // do other thing
-  return is;
+std::istream &operator>>(std::istream &is, Sales_data &item) {
+    // operation
+    if (is) // 在使用前需要检查输入流的合法性.
+        // do some thing
+        ;
+    else; // do other thing
+    return is;
 }
 
 /**
@@ -89,56 +90,55 @@ std::istream &operator>> (std::istream &is, Sales_data &item)
  * @return
  */
 class StrBlobPtr {
- public:
-  // 递增和递减运算符 前置运算符
-  StrBlobPtr &operator++ ();
-  StrBlobPtr &operator-- ();
-  // 后置运算符 后会运算符应该返回对象的原值,返回的形式是一个值而非引用
-  StrBlobPtr operator++ (int);
-  StrBlobPtr operator-- (int);
+public:
+    // 递增和递减运算符 前置运算符
+    StrBlobPtr &operator++();
+
+    StrBlobPtr &operator--();
+
+    // 后置运算符 后会运算符应该返回对象的原值,返回的形式是一个值而非引用
+    StrBlobPtr operator++(int);
+
+    StrBlobPtr operator--(int);
 };
 
 /**
  * 函数调用运算符
  */
 struct absInt {
-  int operator() (int val) const
-  {
-	return val < 0 ? -val : val;
-  }
+    int operator()(int val) const {
+        return val < 0 ? -val : val;
+    }
 
-  int operator() (int v1, int v2) const
-  {
-	return v1 + v2;
-  }
+    int operator()(int v1, int v2) const {
+        return v1 + v2;
+    }
 };
 
 class PrintString {
- public:
-  PrintString (std::ostream &o = std::cout, char c = ' ') :
-	  os (o), sep (c)
-  {}
-  void operator() (const std::string &s)
-  { os << s << sep; }
+public:
+    PrintString(std::ostream &o = std::cout, char c = ' ') :
+            os(o), sep(c) {}
 
- private:
-  std::ostream &os;
-  char sep;
+    void operator()(const std::string &s) { os << s << sep; }
+
+private:
+    std::ostream &os;
+    char sep;
 };
 
 /**
 * 标准库定义的函数对象
  * <functional>
 */
-void stdFunctionObject ()
-{
-  std::plus<int> intAdd; // 可执行int加法的函数对象
-  std::negate<int> intNegate;
-  auto res = intAdd (10, 20);
+void stdFunctionObject() {
+    std::plus<int> intAdd; // 可执行int加法的函数对象
+    std::negate<int> intNegate;
+    auto res = intAdd(10, 20);
 
-  std::cout << res << std::endl;
-  res = intNegate (-5);
-  std::cout << res << std::endl;
+    std::cout << res << std::endl;
+    res = intNegate(-5);
+    std::cout << res << std::endl;
 }
 
 /**
@@ -147,31 +147,37 @@ void stdFunctionObject ()
  * @return
  */
 // ====================调用形式int(int,int)=============
-int add (int i, int j)
-{ return i + j; }
-auto mod = [] (int i, int j)
-{ return i % j; };
+int add(int i, int j) { return i + j; }
+
+auto mod = [](int i, int j) { return i % j; };
+
 struct divide {
-  int operator() (int denominator, int divisor)
-  {
-	return denominator / divisor;
-  }
+    int operator()(int denominator, int divisor) {
+        return denominator / divisor;
+    }
 };
+
 // ====================调用形式int(int,int)=============
+// 构建从去处符到函数指针的映射关系,其中函数接受两个int,返回一个int
+std::map<std::string, int (*)(int, int)> binops;
 
-int main ()
-{
-  absInt abs_int;
+int main() {
+    // 可以将add放入 因为add是不念旧恶指向正确类型函数的指针
+    binops.insert({"+", add});
+    auto addP = binops.at("+");
+    std::cout << "3 + 5 = " << addP(3,5) << std::endl;
+    // 不能将mod或者divide存入binops 因为它们不是函数指针
+    absInt abs_int;
 
-  std::cout << abs_int (-5) << std::endl;
-  std::cout << abs_int (-5, 2) << std::endl;
+    std::cout << abs_int(-5) << std::endl;
+    std::cout << abs_int(-5, 2) << std::endl;
 
-  PrintString printer;
-  printer ("hello");
-  PrintString errors (std::cerr, '\n');
-  errors ("world");
+    PrintString printer;
+    printer("hello");
+    PrintString errors(std::cerr, '\n');
+    errors("world");
 
-  stdFunctionObject ();
+    stdFunctionObject();
 }
 
 

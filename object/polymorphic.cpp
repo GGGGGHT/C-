@@ -8,3 +8,16 @@
 //
 
 #include "polymorphic.h"
+
+/**
+ * 多态提交
+ * @return
+ */
+int main(){
+    Dog dog;
+    Cat cat;
+    doSpeak(dog);
+    doSpeak(cat);
+    Animal am;
+    doSpeak(am);
+}

@@ -8,8 +8,37 @@
 //
 
 #ifndef C__POLYMORPHIC_H
+
+#include "../common/common.h"
+
 #define C__POLYMORPHIC_H
 
+
+class Animal {
+public:
+    virtual void speak() {
+        INFO("动物在说话\n");
+    }
+};
+
+class Cat : public Animal {
+public:
+    virtual void speak() {
+        INFO("猫在说话\n");
+    }
+};
+
+class Dog : public Animal {
+public:
+    virtual void speak() {
+        INFO("狗在说话\n");
+    }
+};
+
+
+void doSpeak(Animal &animal) {
+    animal.speak();
+}
 
 class polymorphic {
 

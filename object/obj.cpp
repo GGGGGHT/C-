@@ -16,5 +16,6 @@ int main() {
     o.getNum();
     obj_sub os;
     os.getNum();
-//    os:obj.getNum();
+    // 子类调用父类的函数。静态成员，成员变量。静态方法都可以使用加命名空间的方式
+    os.obj::getNum();
 }

@@ -11,6 +11,26 @@
 #ifndef _OPERATOROVERRIDE_H_
 #define _OPERATOROVERRIDE_H_
 
-class operatorOverride {};
+#include <iostream>
+
+class operatorOverride {
+};
+
+/**
+ * 类型转换运算符
+ */
+class SmallInt {
+public:
+    SmallInt(int i = 0) : val(i) {
+        if (i < 0 || i > 255) {
+            throw std::out_of_range("Bad SmallInt value");
+        }
+    }
+
+    operator int() const { return val; }
+
+private:
+    std::size_t val;
+};
 
 #endif //_OPERATOROVERRIDE_H_

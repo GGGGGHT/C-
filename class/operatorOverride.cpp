@@ -20,6 +20,7 @@
 #include "operatorOverride.h"
 #include <iostream>
 #include <map>
+#include <functional>
 
 /**
  * 输入和输出运算符重载
@@ -167,6 +168,20 @@ int main() {
     auto addP = binops.at("+");
     std::cout << "3 + 5 = " << addP(3,5) << std::endl;
     // 不能将mod或者divide存入binops 因为它们不是函数指针
+    std::function<int(int, int)> f1 = add;
+    std::function<int(int, int)> f2 = divide();
+    std::function<int(int, int)> f3 = [](int i,int j) { return i * j; };
+    std::cout << f1(4,2) << std::endl;
+    std::cout << f2(4,2) << std::endl;
+    std::cout << f3(4,2) << std::endl;
+    std::map<std::string,std::function<int(int,int)>> biFunction;
+    biFunction.insert(std::make_pair("+",f1));
+    biFunction.insert({"/",f2});
+    biFunction.insert({"*", f3});
+    std::cout << "biFunction add: " << biFunction["+"](10,5) << std::endl;
+    std::cout << "biFunction div: " << biFunction["/"](10,5) << std::endl;
+    std::cout << "biFunction mul: " << biFunction["*"](10,5) << std::endl;
+
     absInt abs_int;
 
     std::cout << abs_int(-5) << std::endl;

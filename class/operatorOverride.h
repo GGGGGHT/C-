@@ -27,7 +27,8 @@ public:
         }
     }
 
-    operator int() const { return val; }
+    // 显式的类型转换去处符 编译器不会自动执行这一类型转换
+   explicit operator int() const { return val; }
 
 private:
     std::size_t val;

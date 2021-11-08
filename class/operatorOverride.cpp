@@ -166,21 +166,21 @@ int main() {
     // 可以将add放入 因为add是不念旧恶指向正确类型函数的指针
     binops.insert({"+", add});
     auto addP = binops.at("+");
-    std::cout << "3 + 5 = " << addP(3,5) << std::endl;
+    std::cout << "3 + 5 = " << addP(3, 5) << std::endl;
     // 不能将mod或者divide存入binops 因为它们不是函数指针
     std::function<int(int, int)> f1 = add;
     std::function<int(int, int)> f2 = divide();
-    std::function<int(int, int)> f3 = [](int i,int j) { return i * j; };
-    std::cout << f1(4,2) << std::endl;
-    std::cout << f2(4,2) << std::endl;
-    std::cout << f3(4,2) << std::endl;
-    std::map<std::string,std::function<int(int,int)>> biFunction;
-    biFunction.insert(std::make_pair("+",f1));
-    biFunction.insert({"/",f2});
+    std::function<int(int, int)> f3 = [](int i, int j) { return i * j; };
+    std::cout << f1(4, 2) << std::endl;
+    std::cout << f2(4, 2) << std::endl;
+    std::cout << f3(4, 2) << std::endl;
+    std::map<std::string, std::function<int(int, int)>> biFunction;
+    biFunction.insert(std::make_pair("+", f1));
+    biFunction.insert({"/", f2});
     biFunction.insert({"*", f3});
-    std::cout << "biFunction add: " << biFunction["+"](10,5) << std::endl;
-    std::cout << "biFunction div: " << biFunction["/"](10,5) << std::endl;
-    std::cout << "biFunction mul: " << biFunction["*"](10,5) << std::endl;
+    std::cout << "biFunction add: " << biFunction["+"](10, 5) << std::endl;
+    std::cout << "biFunction div: " << biFunction["/"](10, 5) << std::endl;
+    std::cout << "biFunction mul: " << biFunction["*"](10, 5) << std::endl;
 
     absInt abs_int;
 
@@ -193,6 +193,11 @@ int main() {
     errors("world");
 
     stdFunctionObject();
+
+    SmallInt si;
+    si = 4; // 首先将4隐式地转换成SmallInt, 然后调用SmallInt::operator=
+    std::cout << si + 3 << std::endl; // 先将si隐式转换成int,然后执行整数的加法
+
 }
 
 

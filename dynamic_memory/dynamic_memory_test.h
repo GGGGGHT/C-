@@ -16,5 +16,18 @@ class dynamic_memory_test {
 
 };
 
+class Box
+{
+public:
+    Box()
+    {
+        INFO("构造函数被调用\n");
+    }
+
+    ~Box()
+    {
+        INFO("析构函数被调用\n");
+    }
+};
 
 #endif //C__DYNAMIC_MEMORY_TEST_H

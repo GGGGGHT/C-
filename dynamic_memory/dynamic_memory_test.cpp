@@ -69,10 +69,19 @@ void allowTwoDimensionalArrays()
     }
     delete [] p;
 }
+
+void allowBox()
+{
+    Box *boxArray = new Box[4];
+
+    delete [] boxArray;
+}
+
+
 int main() {
 //    allowDouble();
     //allowCharArray();
-    allowTwoDimensionalArrays();
-
+//    allowTwoDimensionalArrays();
+allowBox();
     return 0;
 }

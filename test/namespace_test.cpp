@@ -12,6 +12,8 @@
 // use namespace
 using namespace first_space;
 
+//using namespace
+
 int main()
 {
 
@@ -24,5 +26,7 @@ int main()
     // call first namespace func
     func();
 
+    INFO("n1 value: %d\n", nbase::n1::i);
+    INFO("n2 value: %d\n", nbase::n2::i);
     return 0;
 }

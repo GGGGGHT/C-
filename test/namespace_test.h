@@ -30,4 +30,12 @@ namespace second_space {
     }
 }
 
+namespace nbase {
+    namespace n1 {
+        int i = 10;
+    }
+    namespace n2 {
+        int i = 100;
+    }
+}
 #endif //C__NAMESPACE_TEST_H

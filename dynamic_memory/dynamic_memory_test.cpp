@@ -8,3 +8,9 @@
 //
 
 #include "dynamic_memory_test.h"
+
+int main() {
+    double *pvalue = NULL; // 初始化为 null 的指针
+    pvalue = new double;// 为变量请求内存
+    return 0;
+}

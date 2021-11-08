@@ -12,5 +12,11 @@
 int main() {
     double *pvalue = NULL; // 初始化为 null 的指针
     pvalue = new double;// 为变量请求内存
+    if (!(pvalue = new double ))
+    {
+        INFO("alloc memory fail.");
+        exit(1);
+    }
+    delete pvalue;
     return 0;
 }

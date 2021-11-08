@@ -8,6 +8,7 @@
 //
 
 #ifndef C__TEMPLATE_TEST_H
+#include "../common/common.h"
 #define C__TEMPLATE_TEST_H
 
 
@@ -15,5 +16,9 @@ class template_test {
 
 };
 
+template <typename T> inline T const& Max(T const& x, T const& y)
+{
 
+    return x > y ? x : y;
+}
 #endif //C__TEMPLATE_TEST_H

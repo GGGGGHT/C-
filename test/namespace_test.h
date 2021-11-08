@@ -16,5 +16,18 @@ class namespace_test {
 
 };
 
+namespace first_space {
+    void func()
+    {
+        INFO("first space func call\n");
+    }
+}
+
+namespace second_space {
+    void func()
+    {
+        INFO("second space func call\n");
+    }
+}
 
 #endif //C__NAMESPACE_TEST_H

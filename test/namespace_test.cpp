@@ -11,5 +11,10 @@
 int main()
 {
 
+    // call first space
+    first_space::func();
+
+    // call second space
+    second_space::func();
     return 0;
 }

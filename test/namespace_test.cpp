@@ -8,3 +8,8 @@
 //
 
 #include "namespace_test.h"
+int main()
+{
+
+    return 0;
+}

@@ -8,6 +8,7 @@
 //
 
 #ifndef C__NAMESPACE_TEST_H
+#include "../common/common.h"
 #define C__NAMESPACE_TEST_H
 
 

@@ -8,6 +8,10 @@
 //
 
 #include "namespace_test.h"
+
+// use namespace
+using namespace first_space;
+
 int main()
 {
 
@@ -16,5 +20,9 @@ int main()
 
     // call second space
     second_space::func();
+
+    // call first namespace func
+    func();
+
     return 0;
 }

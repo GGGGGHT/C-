@@ -194,10 +194,16 @@ int main() {
 
     stdFunctionObject();
 
-    SmallInt si;
-    si = 4; // 首先将4隐式地转换成SmallInt, 然后调用SmallInt::operator=
-    std::cout << si + 3 << std::endl; // 先将si隐式转换成int,然后执行整数的加法
+//    SmallInt si;
+//    si = 4; // 首先将4隐式地转换成SmallInt, 然后调用SmallInt::operator=
+//    std::cout << si + 3 << std::endl; // 先将si隐式转换成int,然后执行整数的加法
+    SmallInt si = 3;
+    // si + 3; 错误 需要隐式类型转换,但类的去处符是显式的
+    std:: cout << static_cast<int>(si) + 3 << std::endl;
 
+    A f(const A &);
+    B b;
+//    A a = f(b); 二义性错误,含义不确定是f(B:operator A()) 还是 f(A::A(const B&)
 }
 
 

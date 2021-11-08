@@ -34,4 +34,16 @@ private:
     std::size_t val;
 };
 
+// 二义性类型转换
+// 通常情况下，不要为类定义相同的类型转换，也不要在类中定义两个及两个以上转换源或转换目标是算术类型的转换。
+struct B;
+struct A{
+    A() = default;
+    A(const B&);
+};
+
+struct B{
+    operator A() const;
+};
+
 #endif //_OPERATOROVERRIDE_H_

@@ -69,4 +69,16 @@ class Bulk_quote : public Quote { // 派生类必须通过使用类派生列表�
   size_t val;
 };
 
+class NoDerived final { // 使用final关键字可以保证这个类不会被其他类所继承 不能作为基类
+
+};
+class Base{};
+class Last final: Base {};
+// class Bad: NoDerived { final类不可以被继承
+//
+// };
+//
+// class Bad2: Last {
+//
+// };
 #endif //C__CLASSINHERITANCE_H

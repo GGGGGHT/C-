@@ -25,10 +25,10 @@ class Quote {
  public:
   Quote () = default;
 
-  Quote (string &book, double sales_price) : bookNo (book), price (sales_price)
+  Quote (const string &book, double sales_price) : bookNo (book), price (sales_price)
   {}
 
-  string isbn () const
+    string isbn () const
   {
 	return bookNo;
   }
@@ -47,26 +47,42 @@ class Quote {
   double price = 0.0; // 代表普通状态下不打折的价格
 };
 
-class Bulk_quote : public Quote { // 派生类必须通过使用类派生列表明确指出它是从哪些基类继承而来 C++支持多继承 Bulk_quote 继承了Quote
- public:
-  Bulk_quote () = default;
 
-  Bulk_quote (size_t i) : val (i)
-  {}
 
-  string isbn () const
-  {
-	return "Bulk_quote";
-  }
+/**
+ * 抽象基类不能直接创建对象
+ */
+class Disc_quote : public Quote {
+public:
+    Disc_quote() = default;
 
-  // 派生类必须在其内部对所有重新定义的虚函数进行声明. override C++11
-  double net_price (size_t n) const override
-  {
-	return val;
-  }
+    Disc_quote(const std::string &book, double price,
+               std::size_t qty, double disc) : Quote(book,price),quantity(qty), discount(disc) {}
 
- private:
-  size_t val;
+    double net_price(std::size_t) const = 0;
+protected:
+    std::size_t  quantity = 0;
+    double discount = 0.0;
+};
+
+// 这个版本的Bulk_quote的直接基类是Disc_quote，间接基类是Quote。每个Bulk_quote对象包含三个子对象：一个（空的）Bulk_quote部分、一个Disc_quote子对象和一个Quote子对象。
+class Bulk_quote : public Disc_quote { // 派生类必须通过使用类派生列表明确指出它是从哪些基类继承而来 C++支持多继承 Bulk_quote 继承了Quote
+public:
+    Bulk_quote () = default;
+
+    Bulk_quote (const std::string& book, double price, std::size_t qty,double disc) : Disc_quote(book,price,qty,disc)
+    {}
+
+    string isbn () const
+    {
+        return "Bulk_quote";
+    }
+
+    // 派生类必须在其内部对所有重新定义的虚函数进行声明. override C++11
+  double net_price (size_t n) const override;
+
+private:
+    size_t val;
 };
 
 class NoDerived final { // 使用final关键字可以保证这个类不会被其他类所继承 不能作为基类

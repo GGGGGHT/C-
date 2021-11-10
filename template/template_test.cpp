@@ -45,5 +45,9 @@ int main()
 
     int i = echo(1);
     INFO("echo value: %d\n", i);
+    int *j = new int;
+    *j = 100;
+    INFO("echo value j: %d\n", echo(*j));
+
     return 0;
 }

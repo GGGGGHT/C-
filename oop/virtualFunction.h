@@ -13,10 +13,11 @@
  * 派生类向基类转换的可访问性
  *
  * 只有当派生类仅有地继承基类时,用户代码才能使用派生类向基类的转换;如果派生类继承基类的方式是受保护的或私有的,则用户代码不能使用该转换
+ *
+ * struct与class关键字唯一的差别就是默认成员访问说明符及默认派生访问说明符. struct默认是public继承, class默认是private继承
  */
 #ifndef _VIRTUALFUNCTION_H_
 #define _VIRTUALFUNCTION_H_
-
 class virtualFunction {
 
 };

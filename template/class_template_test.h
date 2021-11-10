@@ -9,6 +9,11 @@
 //
 
 #ifndef C__CLASS_TEMPLATE_TEST_H
+#include "../common/common.h"
+#include <vector>
+#include <cstdlib>
+#include <string>
+#include <stdexcept>
 #define C__CLASS_TEMPLATE_TEST_H
 
 
@@ -16,5 +21,43 @@ class class_template_test {
 
 };
 
+template <class T>
+class Stack {
+private:
+    vector<T> elems;
+
+public:
+    void push(T const&);  // 入栈
+    void pop();               // 出栈
+    T top() const;            // 返回栈顶元素
+    bool empty() const{       // 如果为空则返回真。
+        return elems.empty();
+    }
+};
+
+template <class T>
+void Stack<T>::push(T const& elem)
+{
+    elems.push_back(elem);
+}
+
+template <class T>
+T Stack<T>::top() const {
+    if (elems.empty()) {
+        throw out_of_range("Stack<>::top(): empty stack");
+    }
+    // 返回最后一个元素的副本
+    return elems.back();
+}
+
+template <class T>
+void Stack<T>::pop()
+{
+    if (elems.empty()) {
+        throw out_of_range("Stack<>::pop(): empty stack");
+    }
+    // 删除最后一个元素
+    elems.pop_back();
+}
 
 #endif //C__CLASS_TEMPLATE_TEST_H

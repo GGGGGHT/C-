@@ -9,3 +9,12 @@
 //
 
 #include "class_template_test.h"
+
+int main()
+{
+    Stack<int>         intStack;  // int 类型的栈
+    intStack.push(7);
+
+    INFO("int stack topValue: %d\n", intStack.top());
+    return 0;
+}

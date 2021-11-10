@@ -20,6 +20,11 @@ template <typename T> inline T const& Max(T const& x, T const& y)
     return x > y ? x : y;
 }
 
+template <typename T> inline T const& echo(T const& x)
+{
+    return x;
+}
+
 //template <class T>
 //class Stack {
 //private:

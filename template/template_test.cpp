@@ -42,5 +42,8 @@ int main()
 //        cerr << "Exception: " << ex.what() <<endl;
 //        return -1;
 //    }
+
+    int i = echo(1);
+    INFO("echo value: %d\n", i);
     return 0;
 }

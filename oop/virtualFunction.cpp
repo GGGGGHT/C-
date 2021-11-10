@@ -9,6 +9,8 @@
 //
 
 #include "virtualFunction.h"
+#include "classInheritance.h"
+#include <vector>
 
 int main ()
 {
@@ -34,4 +36,14 @@ int main ()
   p2->fcn (42);
   p3->fcn (42);
 
+  // 容器与继承
+  // 当派生类对象被同仁给基类对象时,其中的派生类部分将被"切掉",因此窗口和存在继承关系的类型无法兼容.
+  // 在容器中放置(指针)而非对象
+  using namespace std;
+  vector<shared_ptr<Quote>> basket;
+  basket.push_back (make_shared<Quote> ("0-201-82470", 50));
+  // 可以将一个精兵简政类的普通指针转换成基类指针,也可以把一个派生类的智能指针转换成基类的智能指针
+  basket.push_back (make_shared<Bulk_quote> ("0-201-82470", 50, 10, .25));
+
+  cout << basket.back()->net_price (15) << endl;
 }

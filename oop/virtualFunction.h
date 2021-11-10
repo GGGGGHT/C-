@@ -53,6 +53,15 @@ struct Pirv_Derv: private Base{
 // void clobber(Base &b) { b.prot_mem = 0; }
 
 #include <iostream>
+#include "classInheritance.h"
+#include <set>
+#include <string>
+#include <set>
+#include <map>
+#include <utility>
+#include <cstddef>
+#include <stdexcept>
+
 using std::cout; using std::endl;
 class Base {
  public:
@@ -85,8 +94,51 @@ class D2 : public D1 {
   void f2 ();
 };
 
-int D2::fcn(int) { cout << "D2::fcn(int)" << endl; return 0; }
-int D2::fcn() { cout << "D2::fcn()" << endl; return 0; }
-void D2::f2() { cout << "D2::f2()" << endl; }
+int D2::fcn (int)
+{
+  cout << "D2::fcn(int)" << endl;
+  return 0;
+}
+int D2::fcn ()
+{
+  cout << "D2::fcn()" << endl;
+  return 0;
+}
+void D2::f2 ()
+{ cout << "D2::f2()" << endl; }
 
+class Basket {
+ public:
+  void add_item (const std::shared_ptr<Quote> &sale)
+  { items.insert (sale); }
+  void add_item(const Quote& sale){
+	items.insert (std::shared_ptr<Quote> (sale.clone ()));
+  } // 拷贝给定的对象
+  void add_item(Quote&& sale){
+	items.insert (std::shared_ptr<Quote> (std::move (sale).clone ()));
+  } // 移动给定的对象
+  double total_receipt (std::ostream &) const;
+ private:
+  static bool compare (const std::shared_ptr<Quote> &lhs, const std::shared_ptr<Quote> &rhs)
+  {
+	return lhs->isbn () < rhs->isbn ();
+  }
+
+  std::multiset<std::shared_ptr<Quote>, decltype (compare) *> items{compare};
+};
+
+double Basket::total_receipt (std::ostream &os) const
+{
+  double sum = 0.0;
+  for (auto iter = items.cbegin ();
+	   iter != items.cend ();
+	   iter = items.upper_bound (*iter))
+	{
+	  sum += (*iter)->net_price(items.count (*iter));
+	}
+
+	os << "Total Sale: " << sum << endl;
+
+  return sum;
+}
 #endif //_VIRTUALFUNCTION_H_

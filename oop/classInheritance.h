@@ -41,6 +41,10 @@ class Quote {
 
   virtual ~Quote () = default; // 析构函数
 
+  virtual Quote *clone () const &
+  { return new Quote (*this); }
+  virtual Quote *clone () &&
+  { return new Quote (std::move (*this)); }
  private:
   std::string bookNo; // 书籍的ISBN编号
  protected:
@@ -80,12 +84,15 @@ class Bulk_quote : public Disc_quote { // 派生类必须通过使用类派生�
   // 派生类必须在其内部对所有重新定义的虚函数进行声明. override C++11
   double net_price (size_t n) const override;
 
+  Bulk_quote* clone() const & {return new Bulk_quote(*this);}
+  Bulk_quote* clone() && {return new Bulk_quote(std::move(*this));}
  private:
   size_t val;
 };
-double Bulk_quote::net_price(size_t cnt) const
+double Bulk_quote::net_price (size_t cnt) const
 {
-  if (cnt >= quantity) {
+  if (cnt >= quantity)
+	{
 	  return cnt * (1 - discount) * price;
 	}
   else

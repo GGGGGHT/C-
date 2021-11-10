@@ -10,11 +10,32 @@
 
 #include "class_template_test.h"
 
-int main()
+void intStackTest()
 {
     Stack<int>         intStack;  // int 类型的栈
     intStack.push(7);
 
     INFO("int stack topValue: %d\n", intStack.top());
+}
+
+void stringStackTest()
+{
+    Stack<string> stringStack;
+
+    stringStack.push("hello");
+    stringStack.push(" ");
+    stringStack.push("world!");
+    cout << "string stack value: " << stringStack.top() << endl;
+//    INFO("string stack value: %s\n", stringStack.top());
+    stringStack.pop();
+    stringStack.empty();
+    cout << "string stack is empty:" << stringStack.empty() << endl;
+}
+
+int main()
+{
+   intStackTest();
+    INFO("--------------------------------\n");
+    stringStackTest();
     return 0;
 }

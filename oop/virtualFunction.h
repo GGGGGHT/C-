@@ -22,7 +22,7 @@ class virtualFunction {
 
 };
 
-class Base {
+/*class Base {
  public:
   void pub_mem ();
  protected:
@@ -39,7 +39,7 @@ struct Pub_Derv : public Base {
 
 struct Pirv_Derv: private Base{
   int f1() const{ return prot_mem; }
-};
+};*/
 // class Sneaky : public Base {
 //   friend void clobber (Sneaky &);
 //   friend void clobber (Base &);
@@ -51,4 +51,42 @@ struct Pirv_Derv: private Base{
 // 派生类的成员或友元只能通过派生类对象来访问基类的受保护成员.派生类对于一个基类对象中的受保护成员没有任何访问特权
 // error clobber不能访问base的protected成员
 // void clobber(Base &b) { b.prot_mem = 0; }
+
+#include <iostream>
+using std::cout; using std::endl;
+class Base {
+ public:
+  virtual int fcn ();
+};
+
+int Base::fcn ()
+{
+  cout << "Base::fcn()" << endl;
+  return 0;
+}
+
+class D1 : public Base {
+ public:
+  int fcn (int);
+  virtual void f2 ();
+};
+int D1::fcn (int)
+{
+  cout << "D1::fcn(int)" << endl;
+  return 0;
+}
+void D1::f2 ()
+{ cout << "D1::f2()" << endl; }
+
+class D2 : public D1 {
+ public:
+  int fcn (int);
+  int fcn ();
+  void f2 ();
+};
+
+int D2::fcn(int) { cout << "D2::fcn(int)" << endl; return 0; }
+int D2::fcn() { cout << "D2::fcn()" << endl; return 0; }
+void D2::f2() { cout << "D2::f2()" << endl; }
+
 #endif //_VIRTUALFUNCTION_H_

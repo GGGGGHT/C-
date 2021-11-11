@@ -6,7 +6,6 @@
 //
 // Created by autorun on 2021/11/3.
 //
-
 #include "person_test.h"
 
 struct Student2 {

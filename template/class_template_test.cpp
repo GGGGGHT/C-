@@ -31,6 +31,20 @@ void stringStackTest()
     stringStack.empty();
     cout << "string stack is empty:" << stringStack.empty() << endl;
 }
+void classStackTest()
+{
+//    Stack<element> elementStack;
+//
+//    element el1, el2, el3;
+//    elementStack.push(el1);
+//    elementStack.push(el2);
+//    elementStack.push(el3);
+//    cout << "element stack value: " << elementStack.top() << endl;
+////    INFO("string stack value: %s\n", stringStack.top());
+//    elementStack.pop();
+//    elementStack.empty();
+//    cout << "string stack is empty:" << elementStack.empty() << endl;
+}
 
 int main()
 {

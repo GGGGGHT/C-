@@ -60,4 +60,9 @@ void Stack<T>::pop()
     elems.pop_back();
 }
 
+
+class element {
+
+    };
+
 #endif //C__CLASS_TEMPLATE_TEST_H

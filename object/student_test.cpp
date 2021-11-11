@@ -6,12 +6,10 @@
 //
 // Created by autorun on 2021/11/2.
 //
-
 #include "student_test.h"
 
 int main()
 {
-
     Student stu;
     stu.stuNum = 10;
     stu.stuName = "helloWorld";

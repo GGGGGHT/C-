@@ -69,6 +69,22 @@ template<typename T> T foo (T *p)
 
 // 类型参数之前必须使用关键字class或typename 这两个关键字含义相同,可以互换使用,
 // template<typename T, U> T calc (const T &, const U &) {}
+
+/**
+ * 非类型模板参数
+ * 除了定义类型参数,还可以在模板中定义非类型参数.一个非类型参数表示一个值而不是一个类型. 我们通过一个特定的类型名而不是关键字来指定非类型参数
+ *
+ * @tparam N
+ * @tparam M
+ * @param p1
+ * @param p2
+ * @return
+ */
+template<unsigned N, unsigned M> int compare (const char(&p1)[N], const char(&p2)[M])
+{
+  return strcmp (p1, p2);
+}
+
 int main ()
 {
   // 调用函数模板时,编译器用函数实参来推断模板实参.

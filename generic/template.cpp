@@ -6,7 +6,8 @@
 
 //
 // Created by Admin on 2021/11/10.
-//
+// 编写泛型代码的两个原则 模板程序应该尽量减少对实参类型的要求 函数模板和类模板成员函数的定义通常放在头文件中
+// 1. 模板中的函数参数是const的引用. 2. 函数体中的条件判断仅使用<比较运算
 
 #include "template.h"
 #include <iostream>
@@ -84,6 +85,13 @@ template<unsigned N, unsigned M> int compare (const char(&p1)[N], const char(&p2
 {
   return strcmp (p1, p2);
 }
+/**
+ * inline constexpr 放在模板参数列表之后 返回类型之前
+ * @tparam T
+ * @return
+ */
+template<typename T> inline T min (const T &, const T &);
+template<typename T> constexpr T max (const T &, const T &);
 
 int main ()
 {

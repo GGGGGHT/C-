@@ -37,5 +37,6 @@ int main()
    intStackTest();
     INFO("--------------------------------\n");
     stringStackTest();
+    INFO("--------------------------------\n");
     return 0;
 }

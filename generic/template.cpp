@@ -40,6 +40,8 @@ int compare (const double &v1, const double &v2)
  *
  * 模板定义以关键字template开始  后跟一个模板参数列表, 是使用逗号分隔的一个或多个模板参数 使用<>包围起来
  * 在模板定义中,模板参数不能为空
+ * 可以将类型参数看作类型说明符,就像内置类型或类类型说明符一样.
+ *
 */
 template<typename T>
 int compare (const T &v1, const T &v2)
@@ -51,6 +53,22 @@ int compare (const T &v1, const T &v2)
   return 0;
 }
 
+/**
+ * 类型参数可以用来指定返回类型或函数的参数类型,以及在函数体内用于变量声明或类型转换.
+ *
+ * @tparam T
+ * @param p
+ * @return
+ */
+template<typename T> T foo (T *p)
+{
+  T tmp = *p; // tmp的类型将是指针p指向的类型
+
+  return tmp;
+}
+
+// 类型参数之前必须使用关键字class或typename 这两个关键字含义相同,可以互换使用,
+// template<typename T, U> T calc (const T &, const U &) {}
 int main ()
 {
   // 调用函数模板时,编译器用函数实参来推断模板实参.
@@ -59,5 +77,5 @@ int main ()
   std::cout << compare (1, 0) << std::endl; // T为int
   std::vector<int> vec1{1, 2, 3}, vec2{4, 5, 6};
   // 实例化出int compare(const vector<int>& const vector<int>&)
-  std::cout << compare(vec1,vec2) << std::endl; // T为vector<int>
+  std::cout << compare (vec1, vec2) << std::endl; // T为vector<int>
 }

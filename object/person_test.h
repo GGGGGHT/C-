@@ -6,13 +6,9 @@
 //
 // Created by autorun on 2021/11/3.
 //
-
 #ifndef C__PERSON_TEST_H
-
 #include "../common/common.h"
-
 #define C__PERSON_TEST_H
-
 
 class person_test {
 

@@ -6,7 +6,6 @@
 //
 // Created by autorun on 2021/11/8.
 //
-
 #ifndef C__ABSTRACT_POLYMORPHIC_H
 #include "../common/common.h"
 #define C__ABSTRACT_POLYMORPHIC_H

@@ -15,6 +15,7 @@ class abstract_polymorphic {
 public:
     // 纯虚函数
     virtual void test() = 0;
+
 };
 
 

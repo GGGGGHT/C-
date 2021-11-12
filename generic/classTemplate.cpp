@@ -15,6 +15,12 @@ using namespace std;
 extern template class Blob<std::string>;
 
 template class Blob<std::string>;
+
+/**
+ * 模板实参推断: 从函数实参来确定模板实参的过程称为 模板实参推断66
+ *
+ */
+
 /**
  * 控制实例化
  * 当模板被使用时才会进行实例化,所以当两个或多个独立编译的源文件使用了相同的模板,并提供了相同的模板参数时,每个文件中都会有该模板的一个实例.

@@ -22,6 +22,8 @@
 
 /**
  * 类模板 编译器不能为类模板推断模板参数类型
+ *
+ * 类模板的名字不是一个类型名,类模板用来实例化类型,而一个实例化的类型问题包含模板参数的.
  */
 class classTemplate {};
 
@@ -45,4 +47,31 @@ private:
   std::shared_ptr<std::vector<T>> data;
   void check(size_type i, const std::string &msg) const;
 };
+
+template <typename T>
+void Blob<T>::check(size_type i, const std::string &msg) const {
+  if (i >= data->size())
+    throw std::out_of_range(msg);
+}
+
+template <typename T> T &Blob<T>::back() {
+  check(0, "back on empty Blob");
+  return data->back();
+}
+
+template <typename T> T &Blob<T>::operator[](size_type i) {
+  check(i, "subscript out of range");
+
+  return (*data)[i];
+}
+
+template <typename T> void Blob<T>::pop_back() {
+  check(0, "pop back on empty Blob");
+  data->pop_back();
+}
+
+// 构造函数
+template <typename T>
+Blob<T>::Blob(std::initializer_list<T> il)
+    : data(std::make_shared<std::vector<T>>(il)) {}
 #endif //_CLASSTEMPLATE_H_

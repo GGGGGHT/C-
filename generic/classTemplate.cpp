@@ -11,7 +11,19 @@
 #include "classTemplate.h"
 #include <iostream>
 using namespace std;
+// 显式实例化 对每个实例化声明,在程序中某个位置必须有其显式的实例化定义
+extern template class Blob<std::string>;
 
+template class Blob<std::string>;
+/**
+ * 控制实例化
+ * 当模板被使用时才会进行实例化,所以当两个或多个独立编译的源文件使用了相同的模板,并提供了相同的模板参数时,每个文件中都会有该模板的一个实例.
+ *
+ * 显式实例化形式
+ * extern template declaration; 实例化声明
+ * template declaration; 实例化定义
+ * @return
+ */
 int main() {
   Blob<int> squares = {0, 1, 2, 3, 4, 5};
   for (size_t i = 0; i != squares.size(); i++) {
@@ -21,4 +33,5 @@ int main() {
   for (size_t i = 0; i != squares.size(); i++) {
     cout << squares[i] << endl;
   }
+
 }

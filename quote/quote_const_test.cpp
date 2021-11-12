@@ -1,7 +1,6 @@
 //
 // Created by autorun on 2021/11/2.
 //
-
 #include "quote_const_test.h"
 
 void showValue(const int &value)
@@ -15,7 +14,6 @@ void showValue(const int &value)
 
 int main()
 {
-
     showValue(100);
 
     // int &ref = 100; // 前面说过因为引用本质实际是指针常量，所以引用本身需要一个合法的空间。因此此行错误

@@ -10,11 +10,15 @@
 
 #include "classTemplate.h"
 #include <iostream>
-using namespace std;
-// 显式实例化 对每个实例化声明,在程序中某个位置必须有其显式的实例化定义
-extern template class Blob<std::string>;
 
-template class Blob<std::string>;
+using namespace std;
+
+// 显式实例化 对每个实例化声明,在程序中某个位置必须有其显式的实例化定义
+extern template
+class Blob<std::string>;
+
+template
+class Blob<std::string>;
 
 /**
  * 模板实参推断: 从函数实参来确定模板实参的过程称为 模板实参推断66
@@ -57,8 +61,10 @@ template <typename T> string debug_rep(T *p) {
  */
 template<typename T, typename ... Args>
 void foo(const T &t, const Args &... rest);
+
 // 需要知道包中有多少元素时，可以使用sizeof…运算符
-template<typename  ...Args> void g(Args ... args) {
+template<typename  ...Args>
+void g(Args ... args) {
     cout << sizeof...(Args) << endl; // 类型参数的数目
     cout << sizeof...(args) << endl; // 函数参数的数目
 }
@@ -68,7 +74,7 @@ ostream &print(ostream &os, const T &t) {
     return os << t;
 }
 
-template <class T, class... Args>
+template<class T, class... Args>
 ostream &print(ostream &os, const T &t, const Args... rest) {
     os << t << ", ";
 
@@ -76,6 +82,31 @@ ostream &print(ostream &os, const T &t, const Args... rest) {
     return print(os, rest...);
 }
 // =========可变参数模板==============
+
+
+// =========模板特例化==============
+/**
+ * 一个特例化版本就是模板的一个独立的定义，在其中一个或多个模板参数被指定为特定的类型
+ * 定义函数模板特例化
+ * @return
+ */
+template<typename T>
+int compare (const T &v1, const T &v2)
+{
+    if (v1 < v2)
+        return -1;
+    if (v2 < v1)
+        return 1;
+    return 0;
+}
+
+#include <cstring>
+template<>
+int compare(const char *const &p1, const char *const &p2) {
+    return strcmp(p1, p2);
+}
+
+// =========模板特例化==============
 int main() {
 //  Blob<int> squares = {0, 1, 2, 3, 4, 5};
 //  for (size_t i = 0; i != squares.size(); i++) {
@@ -86,5 +117,6 @@ int main() {
 //    cout << squares[i] << endl;
 //  }
     // 调用可变参数模板
-    print(std::cout, "a", "b", "c");
+//    print(std::cout, "a", "b", "c");
+    std::cout << compare("hi", "hello") << std::endl;
 }

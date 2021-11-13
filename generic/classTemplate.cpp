@@ -45,6 +45,26 @@ template <typename T> string debug_rep(T *p) {
  * template declaration; 实例化定义
  * @return
  */
+
+
+
+// =========可变参数模板==============
+/**
+ * 可接受可变数目的模板函数或模板类. 可变数目的参数被称为参数包.
+ * 模板参数包（template parameter packet），表示零个或多个模板参数；
+ * 函数参数包（function parameter packet），表示零个或多个函数参数。
+ * @return
+ */
+template<typename T, typename ... Args>
+void foo(const T &t, const Args &... rest);
+// 需要知道包中有多少元素时，可以使用sizeof…运算符
+template<typename  ...Args> void g(Args ... args) {
+    cout << sizeof...(Args) << endl; // 类型参数的数目
+    cout << sizeof...(args) << endl; // 函数参数的数目
+}
+
+
+// =========可变参数模板==============
 int main() {
   Blob<int> squares = {0, 1, 2, 3, 4, 5};
   for (size_t i = 0; i != squares.size(); i++) {

@@ -19,6 +19,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <memory>
 
 /**
  * 类模板 编译器不能为类模板推断模板参数类型

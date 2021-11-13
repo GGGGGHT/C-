@@ -20,14 +20,14 @@ template class Blob<std::string>;
  * 模板实参推断: 从函数实参来确定模板实参的过程称为 模板实参推断66
  * 模板重载:　函数模板可以被另一个模板或一个普通非模板函数重载。名字相同的函数必须具有不同数量或类型的参数。
  */
-template <typename T> string debug_rep(const T &t) {
-    ostringstream  res;
-    ret << t;
-    return ret.str();
+/*template <typename T> string debug_rep(const T &t) {
+    std::ostringstream  res;
+    res << t;
+    return res.str();
 }
 
 template <typename T> string debug_rep(T *p) {
-    ostringstream  ret;
+    std::ostringstream  ret;
     ret << "Pointer: " << p;
     if(p)
         ret << " " << debug_rep(*p);
@@ -35,7 +35,7 @@ template <typename T> string debug_rep(T *p) {
         ret << " null pointer";
 
     return ret.str();
-}
+}*/
 /**
  * 控制实例化
  * 当模板被使用时才会进行实例化,所以当两个或多个独立编译的源文件使用了相同的模板,并提供了相同的模板参数时,每个文件中都会有该模板的一个实例.
@@ -63,16 +63,28 @@ template<typename  ...Args> void g(Args ... args) {
     cout << sizeof...(args) << endl; // 函数参数的数目
 }
 
+template<class T>
+ostream &print(ostream &os, const T &t) {
+    return os << t;
+}
 
+template <class T, class... Args>
+ostream &print(ostream &os, const T &t, const Args... rest) {
+    os << t << ", ";
+
+    // 递归调用,打印其他参数
+    return print(os, rest...);
+}
 // =========可变参数模板==============
 int main() {
-  Blob<int> squares = {0, 1, 2, 3, 4, 5};
-  for (size_t i = 0; i != squares.size(); i++) {
-    squares[i] = i * i;
-  }
-
-  for (size_t i = 0; i != squares.size(); i++) {
-    cout << squares[i] << endl;
-  }
-
+//  Blob<int> squares = {0, 1, 2, 3, 4, 5};
+//  for (size_t i = 0; i != squares.size(); i++) {
+//    squares[i] = i * i;
+//  }
+//
+//  for (size_t i = 0; i != squares.size(); i++) {
+//    cout << squares[i] << endl;
+//  }
+    // 调用可变参数模板
+    print(std::cout, "a", "b", "c");
 }

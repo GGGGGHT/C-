@@ -26,6 +26,7 @@ public:
 //        INFO("student name: %s, id: %d\n", stuName, stuNum);
     cout << "student name: " << stuName << ", studentIdCard: " << stuNum << endl;
     }
+
     ~Student()
     {
         INFO("析构函数执行...%d\n", stuNum);

@@ -18,9 +18,24 @@ template class Blob<std::string>;
 
 /**
  * 模板实参推断: 从函数实参来确定模板实参的过程称为 模板实参推断66
- *
+ * 模板重载:　函数模板可以被另一个模板或一个普通非模板函数重载。名字相同的函数必须具有不同数量或类型的参数。
  */
+template <typename T> string debug_rep(const T &t) {
+    ostringstream  res;
+    ret << t;
+    return ret.str();
+}
 
+template <typename T> string debug_rep(T *p) {
+    ostringstream  ret;
+    ret << "Pointer: " << p;
+    if(p)
+        ret << " " << debug_rep(*p);
+    else
+        ret << " null pointer";
+
+    return ret.str();
+}
 /**
  * 控制实例化
  * 当模板被使用时才会进行实例化,所以当两个或多个独立编译的源文件使用了相同的模板,并提供了相同的模板参数时,每个文件中都会有该模板的一个实例.

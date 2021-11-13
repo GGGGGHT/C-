@@ -32,5 +32,4 @@ public:
         INFO("析构函数执行...%d\n", stuNum);
     }
 };
-
 #endif //C__STUDENT_TEST_H

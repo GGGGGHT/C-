@@ -16,8 +16,8 @@ int main()
     stu.displayStudentInfo();
 
     Student* stu2 = new Student();
-stu2->stuNum= 100;
-stu2->stuName = "zhangsan";
-stu2->displayStudentInfo();
-delete stu2;
+    stu2->stuNum= 100;
+    stu2->stuName = "zhangsan";
+    stu2->displayStudentInfo();
+    delete stu2;
 }

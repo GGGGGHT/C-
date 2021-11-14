@@ -14,7 +14,7 @@ using namespace std;
  * class关键字 定义在第一个访问说明符之前的成员是 private 的
  * 当希望定义类的所有成员是public的时，使用struct, 反之，如果希望成员是private的 使用class
  */
-class Sales_data {
+class Sales_data : public error_code {
 	// ========友元==========
 	// 为Sales_data的非成员函数所做的友元声明
 	friend Sales_data add(const Sales_data &, const Sales_data &);
@@ -61,9 +61,9 @@ istream &read(istream &, Sales_data &);
 ostream &print(ostream &, const Sales_data &);
 // ===========Sales_data接口的非成员组成部分的声明
 
-int main(int argc, char **argv) {
-	Sales_data data;
-	// cout << "--> " << data.aaa << endl;
-	// cout << data.bookNo << endl; error无法访问 private
-	return 0;
-}
+//int main(int argc, char **argv) {
+//	Sales_data data;
+//	// cout << "--> " << data.aaa << endl;
+//	// cout << data.bookNo << endl; error无法访问 private
+//	return 0;
+//}

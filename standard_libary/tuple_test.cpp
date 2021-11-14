@@ -2,12 +2,54 @@
 // Created by 75685 on 2021/11/14.
 //
 
+#include "../class/class_access.cpp"
 #include "tuple_test.h"
 #include <iostream>
 #include <tuple>
 #include <vector>
 #include <list>
+#include <functional>
+#include <algorithm>
+#include <functional>
+#include <numeric>
 
+typedef tuple<vector<Sales_data>::size_type,
+        vector<Sales_data>::const_iterator,
+        vector<Sales_data>::const_iterator> matchers;
+
+int compareIsbn(const Sales_data &a,const Sales_data &b) {
+    return a.isbn() < b.isbn();
+}
+
+vector<matchers>
+findBook(const vector<vector<Sales_data>> &files, const string &book) {
+    vector<matchers> ret;
+
+    for (auto it = files.cbegin(); it != files.end(); ++it)
+    {
+        auto found = equal_range(it->cbegin(), it->cend(), book, compareIsbn);
+        if(found.first != found.second) {
+            ret.emplace_back(it - files.cbegin(), found.first, found.second);
+        }
+    }
+    return ret;
+}
+
+
+void reportResults(istream &in,ostream &os,const vector<vector<Sales_data>> &files) {
+    string s;
+    while (in >> s) {
+        auto trans = findBook(files, s);
+        if (trans.empty()) {
+            cout << s << " not found in any stores." << endl;
+            continue;
+        }
+
+        for (const auto &store : trans){
+            os << "store " << get<0>(store) << " sales: " << accumulate(get<1>(store), get<2>(store), Sales_data(s)) << endl;
+        }
+    }
+}
 /**
  * tuple类似pair
  * @return

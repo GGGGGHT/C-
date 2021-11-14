@@ -10,12 +10,14 @@
 
 int main()
 {
+    // stack alloc
     Student stu;
     stu.stuNum = 10;
     stu.stuName = "helloWorld";
     stu.displayStudentInfo();
 
-    Student* stu2 = new Student();
+    // heap alloc
+    Student* stu2 = new Student;
     stu2->stuNum= 100;
     stu2->stuName = "zhangsan";
     stu2->displayStudentInfo();

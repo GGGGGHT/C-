@@ -17,7 +17,8 @@ int main() {
   int x = 5;
   std::bitset<sizeof(x) * 8> y(x);
   auto s = y.to_string();
-  // 0低位                           32 高位
+  // 0高位                          32低位
+  // 0高位                          32低位
   // 00000000000000000000000000000101
   std::cout << s << std::endl;
 
@@ -43,4 +44,14 @@ int main() {
   // 使用最后4个字符
   bitset<32> bitvec6(str, str.size() - 4);
   cout << bitvec6.to_string() << endl;
+
+  cout << bitvec6.any() << endl;
+  cout << bitvec6.all() << endl;
+  cout << bitvec6.none() << endl;
+  cout << bitvec6.count() << endl;
+  cout << bitvec6.size() << endl;
+  cout << bitvec6.test(0) << endl;
+  cout << bitvec6.flip().to_string() << endl;
+  cout << bitvec6.reset().to_string() << endl;
+  cout << bitvec6.set().to_string() << endl;
 }

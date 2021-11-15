@@ -1,7 +1,6 @@
 //
 // Created by autorun on 2021/11/4.
 //
-
 #include "friend_test.h"
 
 int main()
@@ -11,5 +10,4 @@ int main()
 //    t1.i = 500;
     test1(t1);
     INFO("value: %d\n", t1.getI());
-
 }

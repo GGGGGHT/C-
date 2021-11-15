@@ -27,5 +27,20 @@ int main() {
   // cout << regex_replace(test_str, r, "haha") << endl;
   if (regex_search(test_str, results, r))
     cout << results.str() << endl;
+
+  // 忽略大小写 匹配文件名
+  regex fileReg("[[:alpha:]]+\\.(cpp|cxx|cc)$", regex::icase);
+  std::string filename;
+  while(cin >> filename) {
+    if(regex_search(filename,results,fileReg))
+      cout << results.str() << endl;
+  }
+
+  try {
+    std::regex reg("[[:alnum:]+\\.(cpp|cxx|cc)$]", std::regex::icase);
+  } catch (std::regex_error e) {
+    std::cout << e.what() << "\ncode: " << e.code() << std::endl;
+  }
+
 }
 

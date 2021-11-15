@@ -15,7 +15,7 @@
 using namespace std;
 int main() {
   int x = 5;
-  std::bitset<sizeof(x)*8> y(x);
+  std::bitset<sizeof(x) * 8> y(x);
   auto s = y.to_string();
   // 0低位                           32 高位
   // 00000000000000000000000000000101
@@ -33,5 +33,14 @@ int main() {
   bitset<128> bitvec3(~0ULL);
   std::cout << bitvec3.to_string() << std::endl;
 
-
+  // 使用字符串初始化bitset
+  bitset<32> bitvec4("1100");
+  cout << bitvec4.to_string() << endl;
+  std::string str("11111110110111");
+  // 从str[5]开始的四个二进制位 1101
+  bitset<32> bitvec5(str, 5, 4);
+  cout << bitvec5.to_string() << endl;
+  // 使用最后4个字符
+  bitset<32> bitvec6(str, str.size() - 4);
+  cout << bitvec6.to_string() << endl;
 }

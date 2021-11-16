@@ -10,7 +10,19 @@
 
 #ifndef _CATCHPROCESS_H_
 #define _CATCHPROCESS_H_
+#include <iostream>
+class catchProcess {
+  /**
+   * try语句块与构造函数
+   */
+  catchProcess() try : i(0) {
 
-class catchProcess {};
+  } catch (const std::bad_alloc &e) {
+    throw;
+  }
+
+private:
+  int i;
+};
 
 #endif //_CATCHPROCESS_H_

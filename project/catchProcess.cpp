@@ -1,8 +1,8 @@
 // Copyright (c) 2021. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
-// Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
-// Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
-// Vestibulum commodo. Ut rhoncus gravida arcu.
+// Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam
+// lacinia accumsan. Etiam sed turpis ac ipsum condimentum fringilla. Maecenas
+// magna. Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque
+// sagittis ligula eget metus. Vestibulum commodo. Ut rhoncus gravida arcu.
 
 //
 // Created by Admin on 2021/11/16.
@@ -20,8 +20,24 @@
  * 栈展开过程中对象被自动销毁
  * @return
  */
+void manip() {
+  try {
+    // 引发并抛出异常
+    ;
+  } catch (...) { // 捕获所有异常 如果catch-all 与其他catch一起出现,则catch-all 必须在最后的位置
+    throw;
+  }
+}
 int main() {
-
+  /*try {
+    int i = 1 / 0;
+  } catch (my_error &eObj) {
+    eObj.status = 1; // 修改了异常对象
+    throw;
+  } catch (other_erro eObj) {
+    eObj.status = 2; // 只修改了异常对象的局部副本
+    throw;
+  }*/
   // 空的throw只能出现在catch语句或catch语句直接或间接调用的函数之内.如果在处理代码之外的区域遇到了空的throw语句,编译器将调用terminate.
   throw;
 }

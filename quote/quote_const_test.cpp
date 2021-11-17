@@ -11,7 +11,6 @@ void showValue(const int &value)
     INFO("value: -> %d \n", value);
 }
 
-
 int main()
 {
     showValue(100);

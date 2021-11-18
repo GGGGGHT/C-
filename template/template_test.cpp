@@ -23,25 +23,6 @@ int main()
 //    string s2 = "World";
 //    cout << "Max(s1, s2): " << Max(s1, s2) << endl;
 
-// TODO 晚上调试
-//    try {
-//        Stack<int> intStack;  // int 类型的栈
-//        Stack<string> stringStack;    // string 类型的栈
-//
-//        // 操作 int 类型的栈
-//        intStack.push(7);
-//        cout << intStack.top() <<endl;
-//
-//        // 操作 string 类型的栈
-//        stringStack.push("hello");
-//        cout << stringStack.top() << std::endl;
-//        stringStack.pop();
-//        stringStack.pop();
-//    }
-//    catch (exception const& ex) {
-//        cerr << "Exception: " << ex.what() <<endl;
-//        return -1;
-//    }
 
     int i = echo(1);
     INFO("echo value: %d\n", i);

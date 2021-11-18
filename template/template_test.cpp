@@ -8,6 +8,7 @@
 //
 
 #include "template_test.h"
+#include <string>
 
 int main()
 {
@@ -18,17 +19,17 @@ int main()
 //    double f1 = 13.5;
 //    double f2 = 20.7;
 //    cout << "Max(f1, f2): " << Max(f1, f2) << endl;
-//
+
 //    string s1 = "Hello";
 //    string s2 = "World";
 //    cout << "Max(s1, s2): " << Max(s1, s2) << endl;
 
 
-    int i = echo(1);
-    INFO("echo value: %d\n", i);
-    int *j = new int;
-    *j = 100;
-    INFO("echo value j: %d\n", echo(*j));
+    int i1 = echo(1);
+    INFO("echo value: %d\n", i1);
+    int *j1 = new int;
+    *j1 = 100;
+    INFO("echo value j: %d\n", echo(*j1));
 
     return 0;
 }

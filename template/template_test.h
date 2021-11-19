@@ -11,9 +11,6 @@
 #include "../common/common.h"
 #define C__TEMPLATE_TEST_H
 
-class template_test {
-
-};
 
 template <typename T> inline T const& Max(T const& x, T const& y)
 {

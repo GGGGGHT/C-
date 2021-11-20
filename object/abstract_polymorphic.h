@@ -24,6 +24,11 @@ public:
     void test() {
         INFO("impl1 test method\n");
     }
+
+    impl1_polymorphic()
+    {
+
+    }
 };
 
 #endif //C__ABSTRACT_POLYMORPHIC_H

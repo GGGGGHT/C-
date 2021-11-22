@@ -22,5 +22,4 @@ template <typename T> inline T const& echo(T const& x)
     return x;
 }
 
-
 #endif //C__TEMPLATE_TEST_H

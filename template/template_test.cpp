@@ -30,6 +30,5 @@ int main()
     int *j1 = new int;
     *j1 = 100;
     INFO("echo value j: %d\n", echo(*j1));
-
     return 0;
 }

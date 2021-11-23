@@ -24,7 +24,6 @@ int main()
 //    string s2 = "World";
 //    cout << "Max(s1, s2): " << Max(s1, s2) << endl;
 
-
     int i1 = echo(1);
     INFO("echo value: %d\n", i1);
     int *j1 = new int;

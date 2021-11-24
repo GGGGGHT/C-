@@ -14,7 +14,6 @@ void intStackTest()
 {
     Stack<int>         intStack;  // int 类型的栈
     intStack.push(7);
-
     INFO("int stack topValue: %d\n", intStack.top());
 }
 

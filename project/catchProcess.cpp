@@ -28,6 +28,12 @@ void manip() {
     throw;
   }
 }
+
+void f() noexcept {
+  // 违反了异常说明
+  throw std::exception();
+}
+
 int main() {
   /*try {
     int i = 1 / 0;
@@ -39,5 +45,6 @@ int main() {
     throw;
   }*/
   // 空的throw只能出现在catch语句或catch语句直接或间接调用的函数之内.如果在处理代码之外的区域遇到了空的throw语句,编译器将调用terminate.
-  throw;
+  f();
+  // throw;
 }

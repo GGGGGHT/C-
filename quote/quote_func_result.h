@@ -7,9 +7,4 @@
 #define C__QUOTE_FUNC_RESULT_H
 
 
-class quote_func_result {
-
-};
-
-
 #endif //C__QUOTE_FUNC_RESULT_H

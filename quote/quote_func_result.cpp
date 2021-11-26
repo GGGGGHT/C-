@@ -6,7 +6,6 @@
 
 // 引用做返回值
 int &sum1(int a) {
-
     // 1. 不要将局部变量做为引用返回值
     int i = a;
     return i;
@@ -16,7 +15,6 @@ int &sum1(int a) {
 
 // 引用做返回值
 int &sum2(int a) {
-
     // 1. 不要将局部变量做为引用返回值
     static int i = a;
     return i;

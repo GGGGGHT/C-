@@ -28,6 +28,8 @@ template <class T> T add(T a, T b, T c, T d, T e, T f) {
  * 64位机器整数型 rdi,rsi,rdx,rcx,r8,r9
  * 32位机器整数型 edi,esi,edx,ecx,r8d,r9d
  * 浮点型 xmm0,xmm1,xmm2,xmm3,xmm4,xmm5,xmm6
+ *
+ * 在linux中 栈自顶向下增长
  */
 #include <iostream>
 using namespace std;

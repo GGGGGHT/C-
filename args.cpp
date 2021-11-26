@@ -17,6 +17,18 @@ template <class T> T add(T a, T b, T c, T d, T e, T f) {
 
   return t + m + p;
 }
+/**
+ * 使用模板生成int,long,double
+ * __Z3addIdET_S0_S0_S0_S0_S0_S0_ double
+ * __Z3addIlET_S0_S0_S0_S0_S0_S0_ long
+ * __Z3addIiET_S0_S0_S0_S0_S0_S0_ int
+ *
+ * 在linux中传递参数时使用寄存器
+ *
+ * 64位机器整数型 rdi,rsi,rdx,rcx,r8,r9
+ * 32位机器整数型 edi,esi,edx,ecx,r8d,r9d
+ * 浮点型 xmm0,xmm1,xmm2,xmm3,xmm4,xmm5,xmm6
+ */
 #include <iostream>
 using namespace std;
 int main() {

@@ -25,8 +25,7 @@ public:
         INFO("impl1 test method\n");
     }
 
-    impl1_polymorphic()
-    {
+    impl1_polymorphic() {
 
     }
 };

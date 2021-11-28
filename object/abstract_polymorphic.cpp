@@ -11,4 +11,5 @@
 int main() {
     abstract_polymorphic* po1 = new impl1_polymorphic;
     po1->test();
+
 }

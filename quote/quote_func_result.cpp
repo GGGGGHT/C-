@@ -15,7 +15,6 @@ int &sum1(int a) {
     int i = a;
     return i;
     // 2. 函数的调用可以做为左值
-//    return a + b;
 }
 
 // 引用做返回值

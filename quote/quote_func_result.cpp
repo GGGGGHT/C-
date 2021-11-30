@@ -28,14 +28,18 @@ int &sum2(int a) {
 
 int main() {
     int &sum = sum1(10);
+
     // 10
     INFO("result %d\n", sum);
+
     // 乱码
     INFO("result %d\n", sum);
     // 如果函数返回的是引用，则这个调用可以作为左值使用
     sum1(11) = 33;
+
     // 33
     INFO("rst1 = %d \n", sum);
+
     // 乱码
     INFO("result %d\n", sum);
 

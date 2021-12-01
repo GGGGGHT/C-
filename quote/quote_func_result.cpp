@@ -22,6 +22,7 @@ int &sum2(int a) {
     // 1. 不要将局部变量做为引用返回值
     static int i = a;
     return i;
+
     // 2. 函数的调用可以做为左值
     //     sum1(11) = 33;
 }

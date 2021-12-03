@@ -7,9 +7,4 @@
 #define C__QUOTE_CONST_TEST_H
 
 
-class quote_const_test {
-
-};
-
-
 #endif //C__QUOTE_CONST_TEST_H

@@ -6,5 +6,4 @@
 #include "../common/common.h"
 #define C__QUOTE_CONST_TEST_H
 
-
 #endif //C__QUOTE_CONST_TEST_H

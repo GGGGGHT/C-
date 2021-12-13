@@ -19,7 +19,7 @@
 //    AT&T
 //    movb %al, %bl byte传输
 //    movw %ax, %bx word传输
-//    movb %eax, %ebx long传输
+//    movl %eax, %ebx long传输
 
 
 #include <stdio.h>

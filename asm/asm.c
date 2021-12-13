@@ -6,12 +6,28 @@
 
 //
 // Created by 75685 on 2021/8/18.
-//
+// AT&T汇编语法与intel语法的区别 
+// 1. 寄存器名称前需要加%前缀,例如使用eax寄存器时,应该写作%eax,在intel语法中则不需要,对于立即数的命名也不需要加上$符,而AT&T语法需要对立即数加上$符
+// 2. 操作数顺序 AT&T语法中第一个操作数是源操作数,第二个操作数是目的操作数 在intel语法中 第一个数是目的操作数,第二个操作数是源操作数
+//    操作码 目的操作数 源操作数 intel语法
+//    mov    ebx,eax 将eax的内容传送到ebx中
+//    操作码 源操作数 目的操作数 AT&T语法
+//    mov    %eax,%ebx 将eax的内容传送到ebx中
+// 3. 操作数大小 
+//    intel语法:
+//    mov al, byte ptr bl
+//    AT&T
+//    movb %al, %bl byte传输
+//    movw %ax, %bx word传输
+//    movl %eax, %ebx long传输
+
+
 #include <stdio.h>
 
 int main() {
     int a = 10, b;
-    __asm__("movl %1, %%eax\n\t"
+    // 寄存器名字前面加了%%,这是用来使GCC区分操作数和寄存器的,操作数使用%作为前缀,而寄存器使用%%作为前缀
+    __asm__("movl %1, %%eax\n\t"  
             "movl %%eax, %0\n\t"
     :"=r"(b)
     :"r"(a)

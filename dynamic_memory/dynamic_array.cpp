@@ -61,4 +61,16 @@ int main() {
     for (int i = 0; i != 2 * v.size(); ++i) {
         cout << *pp++ << endl;
     }
+
+    // 指针数组
+    int *ptr[3];
+    // ptr声明了一个数组,由3个整数指针组成 ptr每个元素都是一个指向一个int值的指针
+    int arr[3] = {1, 2, 3};
+    for (int i = 0; i != 3; i++) {
+        ptr[i] = &arr[i];
+    }
+
+    for (int i = 0; i != 3; i++) {
+        printf("value of arr[%d] = %d\n", i, *ptr[i]);
+    }
 }

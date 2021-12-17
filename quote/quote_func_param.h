@@ -12,9 +12,4 @@
 #define C__QUOTE_FUNC_PARAM_H
 
 
-class quote_func_param {
-
-};
-
-
 #endif //C__QUOTE_FUNC_PARAM_H

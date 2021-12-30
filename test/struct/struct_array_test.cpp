@@ -8,10 +8,10 @@
 //
 
 #include "struct_array_test.h"
-#include <iostream>
 #include "struct_test.h"
 
-int main() {
+int main()
+{
     /*struct*/
     Student stuArray[3] = {
             {"张三", 15, 99},

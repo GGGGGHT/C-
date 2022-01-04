@@ -12,4 +12,7 @@ int main()
 {
     Person* p = new Person(10, 20, 30);
     p->display();
+
+    Person* p2 = new Person(12, 13,55);
+    p2 -> display();
 }

@@ -17,11 +17,13 @@ class Person {
 
 public:
     //初始化列表语法
-    Person(int a, int b, int c) : m_a(a), m_b(b), m_c(c) {
+    Person(int a, int b, int c) : m_a(a), m_b(b), m_c(c)
+    {
 
     }
 
-    void display() {
+    void display()
+    {
         INFO("m_a: %d, m_b: %d, m_c: %d\n", m_a, m_b, m_c);
     }
 };

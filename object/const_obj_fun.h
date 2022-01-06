@@ -10,5 +10,4 @@
 #include "../common/common.h"
 #define C__CONST_OBJ_FUN_H
 
-
 #endif //C__CONST_OBJ_FUN_H

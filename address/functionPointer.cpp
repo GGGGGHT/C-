@@ -13,7 +13,6 @@ using namespace std;
  *
  *
  */
-
 // 比较两个string对象的长度
 bool lengthCompare(const string &, const string &);
 // pf指向一个函数,该函数的是两个const string的引用,返回值是bool类型

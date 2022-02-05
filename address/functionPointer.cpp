@@ -12,6 +12,7 @@ using namespace std;
  * 函数指针指向函数而非对象。 和其他指针一样，函数指针指向某种特定类型。 函数的类型由它的返回类型和形参类型决定
  *
  */
+
 // 比较两个string对象的长度
 bool lengthCompare(const string &, const string &);
 // pf指向一个函数,该函数的是两个const string的引用,返回值是bool类型

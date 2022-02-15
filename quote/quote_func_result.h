@@ -10,6 +10,4 @@
 #ifndef C__QUOTE_FUNC_RESULT_H
 #include "../common/common.h"
 #define C__QUOTE_FUNC_RESULT_H
-
-
 #endif //C__QUOTE_FUNC_RESULT_H

@@ -31,7 +31,8 @@ void sum1(int &a, int &b)
     INFO("sum result quote : %d \n", rst);
 }
 
-int main() {
+int main()
+{
     int a = 10, b = 20;
     int *pa = &a;
     int *pb = &b;

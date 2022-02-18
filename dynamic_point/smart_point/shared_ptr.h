@@ -14,7 +14,6 @@ using namespace std;
 
 #define C__DEMO_H
 
-
 class demo {
 
 };

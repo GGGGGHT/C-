@@ -5,7 +5,6 @@
 // Vestibulum commodo. Ut rhoncus gravida arcu.
 //
 #include "iostream"
-
 using namespace std;
 /**
  * 函数指针

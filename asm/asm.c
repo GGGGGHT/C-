@@ -60,3 +60,16 @@ inline jint Atomic::cmpxchg(jint exchange_value, volatile jint *dest,
 // MFENCE — Memory Fence https://www.felixcloutier.com/x86/mfence
 // LFENCE — Load Fence  https://www.felixcloutier.com/x86/lfence
 // SFENCE — Store Fence https://www.felixcloutier.com/x86/sfence
+
+
+
+
+
+// 大端与小端
+// 0x01020304 要存储到0x005071的位置上 0x01020304 左边的数字是高位，右侧代表低位
+// 大端表示: 高位字节排放在内存的低地址端，低位字节排放在内存的高地址端
+//  address:  0x005071   0x005072   0x005073   0x005074
+//  value:    0x01       0x02       0x03       0x04
+// 小端表示: 低位字节排放在内存低地址端,高位字节排放在内存高地址端
+//  address:  0x005071   0x005072   0x005073   0x005074
+//  value:    0x04       0x03       0x02       0x01

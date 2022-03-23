@@ -17,6 +17,4 @@ using namespace std;
 class demo {
 
 };
-
-
 #endif //C__DEMO_H

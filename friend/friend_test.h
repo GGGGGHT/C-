@@ -25,7 +25,6 @@ protected:
     int i;
 };
 
-
 void test1(friendTest &test) {
     test.i = 1001;
 }

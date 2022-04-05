@@ -9,7 +9,6 @@ using namespace std;
 /**
  * 函数指针
  * 函数指针指向函数而非对象。 和其他指针一样，函数指针指向某种特定类型。 函数的类型由它的返回类型和形参类型决定
- *
  */
 // 比较两个string对象的长度
 bool lengthCompare(const string &, const string &);

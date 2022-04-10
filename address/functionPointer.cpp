@@ -24,7 +24,6 @@ int main() {
     cout << pf(ref1, ref2) << endl;
 }
 
-
 bool lengthCompare(const string &s1, const string &s2) {
     return s1.size() > s2.size();
 }

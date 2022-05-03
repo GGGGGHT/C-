@@ -20,7 +20,7 @@ using namespace std;
  * getline 函数，从一个给你写的istream读取一行数据。存入一个给你写的string对象中
  *
  *
- * 头文件		作用
+ * 头文件		 作用
  * iostream  | 用于读写流的基本类型
  * fstream	 | 用于读取命名文件的类型
  * sstream	 | 用于读写内存string对象的类型

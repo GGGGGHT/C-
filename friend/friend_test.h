@@ -29,3 +29,4 @@ void test1(friendTest &test) {
     test.i = 1001;
 }
 #endif //C__FRIEND_TEST_H
+

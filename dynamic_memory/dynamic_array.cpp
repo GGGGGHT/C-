@@ -7,7 +7,20 @@
 #include <memory>
 #include <vector>
 
+#define  n (x+1)
 using namespace std;
+
+void d() {
+    int x = 1;
+    printf("%d\n", n);
+}
+
+int x = 1;
+
+void c() {
+    printf("%d\n", n);
+}
+
 
 int main() {
     // 未初始化的int
@@ -37,40 +50,63 @@ int main() {
     delete[] pa;*/
 
 
-    std::allocator<string> alloc;
-    auto *sp = alloc.allocate(3);
-    auto sq = sp;
-    alloc.construct(sq++, "a");
-    alloc.construct(sq++, 10, 'h');
-    alloc.construct(sq++, "hi");
-    for (int i = 0; i != 3; ++i) {
-        cout << *sp++ << endl;
+//    std::allocator<string> alloc;
+//    auto *sp = alloc.allocate(3);
+//    auto sq = sp;
+//    alloc.construct(sq++, "a");
+//    alloc.construct(sq++, 10, 'h');
+//    alloc.construct(sq++, "hi");
+//    for (int i = 0; i != 3; ++i) {
+//        cout << *sp++ << endl;
+//    }
+//
+//    while (sq != sp) {
+//        alloc.destroy(--sq);
+//    }
+//    // alloc.deallocate(sq, 3); // 释放内存
+//
+//    std::vector<int> v = {1, 2, 3, 4, 5};
+//    allocator<int> ia;
+//    auto ip = ia.allocate(v.size() * 2);
+//    auto iq = uninitialized_copy(v.cbegin(), v.cend(), ip);
+//    uninitialized_fill_n(iq, v.size(), 42);
+//    auto pp = ip;
+//    for (int i = 0; i != 2 * v.size(); ++i) {
+//        cout << *pp++ << endl;
+//    }
+//
+//    // 指针数组
+//    int *ptr[3];
+//    // ptr声明了一个数组,由3个整数指针组成 ptr每个元素都是一个指向一个int值的指针
+//    int arr[3] = {1, 2, 3};
+//    for (int i = 0; i != 3; i++) {
+//        ptr[i] = &arr[i];
+//    }
+//
+//    for (int i = 0; i != 3; i++) {
+//        printf("value of arr[%d] = %d\n", i, *ptr[i]);
+//    }
+    int a = 1;
+    int b = 1;
+    {
+        int b = 2;
+        {
+            int a = 3;
+            // 3 2
+            cout << a << ' ' << b << endl;
+        }
+        {
+            int b = 4;
+            // 1 4
+            cout << a << ' ' << b << endl;
+        }
+        // 1 2
+        cout << a << ' ' << b << endl;
     }
+    // 1 1
+    cout << a << ' ' << b << endl;
 
-    while (sq != sp) {
-        alloc.destroy(--sq);
-    }
-    // alloc.deallocate(sq, 3); // 释放内存
-
-    std::vector<int> v = {1, 2, 3, 4, 5};
-    allocator<int> ia;
-    auto ip = ia.allocate(v.size() * 2);
-    auto iq = uninitialized_copy(v.cbegin(), v.cend(), ip);
-    uninitialized_fill_n(iq, v.size(), 42);
-    auto pp = ip;
-    for (int i = 0; i != 2 * v.size(); ++i) {
-        cout << *pp++ << endl;
-    }
-
-    // 指针数组
-    int *ptr[3];
-    // ptr声明了一个数组,由3个整数指针组成 ptr每个元素都是一个指向一个int值的指针
-    int arr[3] = {1, 2, 3};
-    for (int i = 0; i != 3; i++) {
-        ptr[i] = &arr[i];
-    }
-
-    for (int i = 0; i != 3; i++) {
-        printf("value of arr[%d] = %d\n", i, *ptr[i]);
-    }
+    d();
+    c();
 }
+

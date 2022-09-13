@@ -45,7 +45,6 @@ public:
     {
         cout << "Obj2(Obj2&&)\n";
     }
-
 };
 
 int main()

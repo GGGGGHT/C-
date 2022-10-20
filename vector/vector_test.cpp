@@ -37,6 +37,7 @@ public:
     {
         cout << "Obj2()\n";
     }
+
     Obj2(const Obj2&)
     {
         cout << "Obj2(const Obj2&)\n";

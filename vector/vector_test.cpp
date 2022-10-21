@@ -42,6 +42,7 @@ public:
     {
         cout << "Obj2(const Obj2&)\n";
     }
+
     Obj2(Obj2&&) noexcept
     {
         cout << "Obj2(Obj2&&)\n";

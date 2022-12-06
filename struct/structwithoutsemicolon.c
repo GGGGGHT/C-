@@ -4,7 +4,10 @@
 // Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
 // Vestibulum commodo. Ut rhoncus gravida arcu.
 
-struct Foo {}
+struct Foo
+{
+
+}
 
 int main() {
     return 0;

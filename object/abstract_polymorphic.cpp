@@ -4,7 +4,6 @@
 // Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
 // Vestibulum commodo. Ut rhoncus gravida arcu.
 //
-//
 #include "abstract_polymorphic.h"
 #include "../common/common.h"
 

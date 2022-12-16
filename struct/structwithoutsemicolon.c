@@ -6,7 +6,6 @@
 
 struct Foo
 {
-
 }
 
 int main() {
